@@ -1,0 +1,67 @@
+
+
+body{
+    background-color: #325050;
+}
+
+h1{
+    font-size: 50px;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+button{
+    text-align: center;
+}
+
+button[type="submit"]{
+    background-color: gray;
+}
+
+button[type="reset"]{
+    background-color:darkred;
+}
+
+form > *{
+    font-family: "Quintessential";
+    font-weight: 500;
+    font-size: large;
+    margin: 0;
+    padding: 10px;
+    border-width: 0;
+}
+
+input[type="checkbox"]{
+    content: " ";
+    appearance: none;
+    outline: none;
+    width: 50px;
+    height: 10px;
+}
+
+input[type="checkbox"]:checked::after{
+    content: "✓";
+    color:darkblue;
+}
+
+li:has(input[type="checkbox"]:checked){
+    background-color: cadetblue;
+}
+
+li:has(input[type="checkbox"]:checked) p{
+    text-decoration: dashed;
+}
+
+
+footer{
+    color: white;
+    font-family: "Quintessential";
+}
+
+.todolist li{
+    background-color: white;
+}
+
+.todolist li:hover{
+    background-color: lightgrey;
+}
