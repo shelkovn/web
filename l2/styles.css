@@ -48,8 +48,8 @@ li:has(input[type="checkbox"]:checked){
     background-color: cadetblue;
 }
 
-li:has(input[type="checkbox"]:checked) p{
-    text-decoration: dashed;
+li:has(input[type="checkbox"]:checked){
+    text-decoration: line-through;
 }
 
 
