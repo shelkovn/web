@@ -1,13 +1,21 @@
-
+/* спросить: почему меняется размер листа, как сделать крестик не эмодзи,
+ как центрировать сообщение  no items*/
 
 body{
     background-color: #325050;
 }
 
+.inputs {
+    width: 80%;
+    margin: 0 auto;
+}
+
 h1{
-    font-size: 50px;
+    font-size: 50pt;
     color: white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Rampart One", Impact;
+    word-spacing: 2cqb;
+    letter-spacing:-2cqb;
 }
 
 button{
@@ -22,33 +30,43 @@ button[type="reset"]{
     background-color:darkred;
 }
 
-form > *{
-    font-family: "Quintessential";
+input[type="text"]{
+    width: 90%;
+    font-family: 'Viaoda Libre';
+}
+
+form *{
+    font-family: "Viaoda Libre";
     font-weight: 500;
     font-size: large;
-    margin: 0;
+    margin: 0px;
     padding: 10px;
     border-width: 0;
 }
 
 input[type="checkbox"]{
-    content: " ";
+    content: "✓";
     appearance: none;
     outline: none;
+    font-size: 17pt;
+    font-weight: bold;
     width: 50px;
-    height: 10px;
+    height: 20px;
+    margin: 5px;
 }
 
 input[type="checkbox"]:checked::after{
     content: "✓";
-    color:darkblue;
+    font-size: 17pt;
+    font-weight:bold;
+    width: 50px;
+    height: 20px;
+    margin: 5px;
+    color:rgb(6, 66, 66);
 }
 
 li:has(input[type="checkbox"]:checked){
-    background-color: cadetblue;
-}
-
-li:has(input[type="checkbox"]:checked){
+    background-color: rgb(96, 209, 175);
     text-decoration: line-through;
 }
 
@@ -58,10 +76,29 @@ footer{
     font-family: "Quintessential";
 }
 
+.todolist{
+    width: 50%;
+    margin: 50px auto;
+    top: 50px;
+    list-style:none;
+    height: 50vh;
+    padding-inline-start:0px;
+    width: 50vw;
+    overflow: auto;
+}
 .todolist li{
+    height: 40px;
+    width: 100%;
     background-color: white;
+    vertical-align: center;
 }
 
 .todolist li:hover{
     background-color: lightgrey;
+}
+
+.todolist:empty::before{
+    content: "No items found";
+    background-color: white;
+    font-family: 'Viaoda Libre';
 }
