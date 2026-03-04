@@ -1,119 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>очен важные вещи наверное</title>
-    <link rel="icon" href="https://cdn3.emoji.gg/emojis/1218-pringlescam.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дела</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" href="https://cdn3.emoji.gg/emojis/1218-pringlescam.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rampart+One&family=Viaoda+Libre&family=Quintessential&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div class="inputs">
-        <h1> список дел </h1>
-        <form >
-            <input type="text" placeholder="новый элемент чето"/>
-            <button type="submit"> add </button>
-            <button type="reset"> reset </button>
-        </form>
+  <header class="page-header">
+    <h1>список дел</h1>
+  </header>
+
+  <div class="input-section">
+    <div class="input-group">
+      <input type="text" placeholder="новый элемент...">
+      <div class="button-cluster">
+        <button type="submit">добавить</button>
+        <button type="reset">сбросить</button>
+      </div>
     </div>
-    <ul class="todolist" >
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    бегит 
-                    <sub> 05.02.2025</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    begit 
-                    <sub> 67.67.6767</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    begit 
-                    <sub> 67.67.6767</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    begit 
-                    <sub> 67.67.6767</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    begit 
-                    <sub> 67.67.6767</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    begit 
-                    <sub> 67.67.6767</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    begit 
-                    <sub> 67.67.6767</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    begit 
-                    <sub> 67.67.6767</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    begit 
-                    <sub> 67.67.6767</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    begit 
-                    <sub> 67.67.6767</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
-        <li>
-             <input type="checkbox"/>
-                <label>
-                    begit 
-                    <sub> 67.67.6767</sub>
-                </label>
-                <label>&#x274C;</label>
-        </li>
+  </div>
+
+  <div class="todo-list-container">
+    <ul class="todo-list">
+      <li>
+        <div class="todo-item">
+          <input type="checkbox">
+          <div class="task-content">
+            <span class="task-text">бегит</span>
+            <span class="task-date">05.02.2025</span>
+          </div>
+        </div>
+        <span class="delete-cross" aria-label="удалить">&times;</span>
+      </li>
+      <li>
+        <div class="todo-item">
+          <input type="checkbox">
+          <div class="task-content">
+            <span class="task-text">бегит</span>
+            <span class="task-date">05.02.2025</span>
+          </div>
+        </div>
+        <span class="delete-cross" aria-label="удалить">&times;</span>
+      </li>
+      <li>
+        <div class="todo-item">
+          <input type="checkbox">
+          <div class="task-content">
+            <span class="task-text">бегит</span>
+            <span class="task-date">05.02.2025</span>
+          </div>
+        </div>
+        <span class="delete-cross" aria-label="удалить">&times;</span>
+      </li>
+      <li>
+        <div class="todo-item">
+          <input type="checkbox">
+          <div class="task-content">
+            <span class="task-text">купить зелёный чай, травяной сбор и мёд</span>
+            <span class="task-date">12.08.2025</span>
+          </div>
+        </div>
+        <span class="delete-cross">&times;</span>
+      </li>
+      <li>
+        <div class="todo-item">
+          <input type="checkbox">
+          <div class="task-content">
+            <span class="task-text">позвонить бабушке</span>
+            <span class="task-date">сегодня</span>
+          </div>
+        </div>
+        <span class="delete-cross">&times;</span>
+      </li>
+      <li>
+        <div class="todo-item">
+          <input type="checkbox" checked>
+          <div class="task-content">
+            <span class="task-text">прочитать документацию по CSS</span>
+            <span class="task-date">01.03.2026</span>
+          </div>
+        </div>
+        <span class="delete-cross">&times;</span>
+      </li>
+      <li>
+        <div class="todo-item">
+          <input type="checkbox">
+          <div class="task-content">
+            <span class="task-text">очень длинное название дела, которое точно не поместится в одну строку и будет обрезано с многоточием, потому что мы не хотим переносить текст</span>
+            <span class="task-date">31.12.2025</span>
+          </div>
+        </div>
+        <span class="delete-cross">&times;</span>
+      </li>
+      <li>
+        <div class="todo-item">
+          <input type="checkbox">
+          <div class="task-content">
+            <span class="task-text">записаться к врачу</span>
+            <span class="task-date">17.03.2026</span>
+          </div>
+        </div>
+        <span class="delete-cross">&times;</span>
+      </li>
+      <li>
+        <div class="todo-item">
+          <input type="checkbox">
+          <div class="task-content">
+            <span class="task-text">помыть окна</span>
+            <span class="task-date">апрель 2026</span>
+          </div>
+        </div>
+        <span class="delete-cross">&times;</span>
+      </li>
     </ul>
-    <footer>
-        <hr/>
+  </div>
+
+  <footer class="footer">
         &dagger; biba ochen umni
-    </footer>
+  </footer>
 </body>
 </html>
