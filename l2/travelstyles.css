@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'Forksa';
+  src: url('/Forksa-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; 
+}
+
+@font-face {
+  font-family: 'GapSans';
+  src: url('GapSansBold.ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; 
+}
+
+*{
+    font-family: 'GapSans', sans-serif;
+    font-weight: 400;
+}
+
+#header{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#header h1{
+    font-family: 'Forksa';
+    font-size: 5rem;
+}
+
+#header h2{
+    font-family: 'GapSans';
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+h2{
+    font-family: 'Forksa', ;
+    font-weight: 400;
+}
+
+#navigation{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+#map{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#description{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-container{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items:start;
+}
+
+.desc-image{
+    max-width: 300px;
+    margin: 5%;
+    float:left;
+}
+
+#weather{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#about{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+
+#faq{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contacts{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
