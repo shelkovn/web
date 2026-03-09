@@ -27,7 +27,7 @@
     <section id="map">
         <h2>Карта регионов</h2>
         <div>
-            <svg>
+            <svg width="100%" height="100%">
                 <rect width="100%" height="100%" fill="#f0f0f0"></rect>
             </svg>
         </div>
@@ -36,7 +36,7 @@
     <section id="description">
         <div class="text-container">
         <h2>Описание</h2>
-            <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+            <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
             <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
             <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
         </div>
@@ -46,7 +46,7 @@
     <section id="weather" style="min-height: 300px;">
         <h2>Погода</h2>
         <div class="weather-container">
-            <svg>
+            <svg width="100%" height="100%">
                 <rect width="100%" height="100%" fill="#f0f0f0"></rect>
             </svg>
         </div>
@@ -65,21 +65,26 @@
     <section id="faq">
         <h2>Часто задаваемые вопросы</h2>
         <div class="faq-item">
-            <h3 class="faq-question">Зачем катиться в Берчестан?</h3>
+            <input type="checkbox" id="faq1" class="faq-toggle">
+            <label for="faq1" class="faq-question">Зачем катиться в Берчестан?</label>
             <div class="faq-answer">
-                <p>Там очень круто.</p>
+                <p>Там очень круто. Лучшие пейзажи, дружелюбные местные жители и невероятная кухня.</p>
             </div>
         </div>
+        
         <div class="faq-item">
-            <h3 class="faq-question">Как катиться в Берчестан?</h3>
+            <input type="checkbox" id="faq2" class="faq-toggle">
+            <label for="faq2" class="faq-question">Как катиться в Берчестан?</label>
             <div class="faq-answer">
-                <p>Колбаской.</p>
+                <p>Колбаской. Также доступны варианты: шариком, кубиком и иногда пирамидкой.</p>
             </div>
         </div>
+        
         <div class="faq-item">
-            <h3 class="faq-question">Почему вам стоит доверять?</h3>
+            <input type="checkbox" id="faq3" class="faq-toggle">
+            <label for="faq3" class="faq-question">Почему вам стоит доверять?</label>
             <div class="faq-answer">
-                <p>Мы очень крутые.</p>
+                <p>Мы очень крутые. Уже 10 лет катимся по Берчестану и знаем каждый его уголок.</p>
             </div>
         </div>
         <button class="contact-button"> Задать вопрос </button>
