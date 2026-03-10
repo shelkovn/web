@@ -1,269 +1,329 @@
+@charset "UTF-8";
+:root {
+  --color-primary-dark: #1e4a4a;
+  --color-primary-darker: #1e3d3d;
+  --color-primary-text: #1a3636;
+  --color-accent: #60a78f;
+  --color-accent-light: #d5e6e6;
+  --color-gray-light: #8f9e9e;
+  --color-gray-lighter: #dddddd;
+  --color-submit: #6f7c7c;
+  --color-reset: #b13e3e;
+  --color-delete: #8b0000;
+  --color-delete-hover: #ff809c;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --font-primary: 'Viaoda Libre', serif;
+  --font-heading: 'Rampart One', cursive;
+  --font-accent: 'Quintessential', cursive;
+  --spacing-xs: 2px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 1.2rem;
+  --spacing-xxl: 1.5rem;
+  --checkbox-size: 26px;
+  --logo-size: 4rem;
+  --delete-size: 30px;
+  --footer-border: 3px;
+  --transition-fast: 0.1s ease;
+  --transition-normal: 0.2s ease;
+  --breakpoint-tablet: 769px;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    background-image: url("https://i.pinimg.com/736x/33/e0/ee/33e0ee4a680e8157d58385336800aede.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: soft-light;
-    background-color: #1e4a4a;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    font-family: 'Viaoda Libre', serif;
-    position: relative;
+  background-image: url("https://i.pinimg.com/736x/33/e0/ee/33e0ee4a680e8157d58385336800aede.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: soft-light;
+  background-color: var(--color-primary-dark);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: var(--font-primary);
+  position: relative;
 }
 
 @media screen and (min-width: 769px) {
-    body {
-        background-repeat: repeat;
-        background-size: auto;
-    }
+  body {
+    background-repeat: repeat;
+    background-size: auto;
+  }
 }
-
 .page-header {
-    flex-shrink: 0;
-    text-align: center;
+  flex-shrink: 0;
+  text-align: center;
 }
 
 .page-header h1 {
-    color: white;
-    font-family: 'Rampart One', cursive;
-    font-size: clamp(3rem, 5rem, 6rem);
-    letter-spacing: -2rem;
-    word-spacing: 3rem;
-    margin: 0;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  letter-spacing: -2rem;
+  word-spacing: 3rem;
+  margin: 0;
 }
 
 .logo {
-    width: fit-content;
-    height: 4rem;
-    border-radius: 2rem;
-    align-self: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: var(--logo-size);
+  border-radius: 2rem;
+  align-self: center;
 }
 
 .input-section {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    padding: 1.2rem 1rem;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-xl) 1rem;
 }
 
 .input-group {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 80vw;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80vw;
+  width: 100%;
 }
 
-.input-group input[type="text"] {
-    flex: 1 1 50vw;
-    padding-left: 1rem;
-    border: none;
-    background: white;
-    font-family: 'Viaoda Libre', serif;
-    font-size: 1.3rem;
-    outline: none;
-    color: #1e3d3d;
+.input-group input[type=text] {
+  flex: 1 1 50vw;
+  padding-left: 1rem;
+  border: none;
+  background: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: 1.3rem;
+  outline: none;
+  color: var(--color-primary-darker);
 }
 
 .button-cluster {
-    display: flex;
-    flex: 0 1 auto;
+  display: flex;
+  flex: 0 1 auto;
 }
 
 .button-cluster button {
-    border: none;
-    padding: 14px 28px;
-    font-family: 'Viaoda Libre', serif;
-    font-size: 1.3rem;
-    color: white;
-    transition: filter 0.1s ease;
-    cursor: pointer;
-    margin: 0;
-    border-radius: 0;
+  border: none;
+  padding: 14px 28px;
+  font-family: var(--font-primary);
+  font-size: 1.3rem;
+  color: var(--color-white);
+  transition: filter var(--transition-fast);
+  cursor: pointer;
+  margin: 0;
+  border-radius: 0;
 }
 
-.button-cluster button[type="submit"] {
-    background-color: #6f7c7c;
+.button-cluster button[type=submit] {
+  background-color: var(--color-submit);
 }
 
-.button-cluster button[type="reset"] {
-    background-color: #b13e3e;
+.button-cluster button[type=reset] {
+  background-color: var(--color-reset);
 }
 
 .button-cluster button:hover {
-    filter: brightness(1.1);
+  filter: brightness(1.1);
 }
 
 .button-cluster button:active {
-    filter: brightness(0.9);
+  filter: brightness(0.9);
 }
 
 .todo-list-container {
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    padding: 0 1rem 1.5rem;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem var(--spacing-xxl);
 }
 
 .todo-list {
-    width: 100%;
-    max-width: 50vw;
-    background-color: transparent;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    max-height: 60dvh;
-    overflow-y: auto;
-    vertical-align: middle;
+  width: 100%;
+  max-width: 50vw;
+  background-color: transparent;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  max-height: 60dvh;
+  overflow-y: auto;
+  vertical-align: middle;
 }
 
 .todo-list li {
-    background-color: white;
-    display: flex;
-    align-items: center;
-    padding: 10px 15px 20px 10px;
-    gap: 10px;
-    transition: background-color 0.2s, color 0.2s;
-    min-height: 70px;
-    width: 100%;
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: var(--spacing-sm);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  min-height: 70px;
+  width: 100%;
 }
 
 .todo-list li:hover {
-    background-color: #d5e6e6;
+  background-color: var(--color-accent-light);
 }
 
 .todo-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex: 1;
-    min-width: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  flex: 1;
+  position: relative;
 }
 
-
-.todo-item input[type="checkbox"] {
-    appearance: none;
-    width: 26px;
-    height: 26px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin: 0;
+.todo-toggle {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
 
-.todo-item input[type="checkbox"]:checked::after {
-    content: "✓";
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
+.todo-item::before {
+  content: "";
+  border-radius: 4px;
+  display: inline-block;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: all var(--transition-normal);
+  pointer-events: none;
+}
+
+.todo-item:has(input[type=checkbox]:checked)::before {
+  content: "✓";
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
 }
 
 .task-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
-    margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  margin-right: 3rem;
 }
 
 .task-text {
-    font-size: 1.4rem;
-    font-family: 'Viaoda Libre', serif;
-    color: #1a3636;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* обрезаем длинный текст, узнать почему . вместо ... */
-    max-width: 100%;
+  font-size: 1.4rem;
+  font-family: var(--font-primary);
+  color: var(--color-primary-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .task-date {
-    font-size: 0.85rem;
-    font-family: 'Quintessential', cursive;
-    color: #8f9e9e;
-    margin-top: 2px;
+  font-size: 0.85rem;
+  font-family: var(--font-accent);
+  color: var(--color-gray-light);
+  margin-top: var(--spacing-xs);
 }
 
 .delete-cross {
-    font-size: 2rem;
-    font-weight: 300;
-    color: black;
-    cursor: pointer;
-    line-height: 1;
-    flex-shrink: 0;
-    transition: color 0.1s;
-    font-family: 'Quintessential', serif;
-    user-select: none;
-    width: 30px;
-    text-align: center;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-black);
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+  font-family: var(--font-accent);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  width: var(--delete-size);
+  text-align: center;
 }
 
 .delete-cross:hover {
-    color: #8b0000;
+  color: var(--color-delete);
 }
 
-
-.todo-list li:has(input[type="checkbox"]:checked) {
-    background-color: #60a78f;
+.todo-list li:has(input[type=checkbox]:checked) {
+  background-color: var(--color-accent);
 }
 
-.todo-list li:has(input[type="checkbox"]:checked) .task-text {
-    color: white;
-    text-decoration: line-through;
-    text-decoration-thickness: 2px;
+.todo-list li:has(input[type=checkbox]:checked) .task-text {
+  color: var(--color-white);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
 }
 
-.todo-list li:has(input[type="checkbox"]:checked) .task-date {
-    color: #dddddd;
+.todo-list li:has(input[type=checkbox]:checked) .task-date {
+  color: var(--color-gray-lighter);
 }
 
-.todo-list li:has(input[type="checkbox"]:checked) .delete-cross {
-    color: #ffffff;
+.todo-list li:has(input[type=checkbox]:checked) .delete-cross {
+  color: var(--color-white);
 }
 
-.todo-list li:has(input[type="checkbox"]:checked) .delete-cross:hover {
-    color: #ff809c;
+.todo-list li:has(input[type=checkbox]:checked) .delete-cross:hover {
+  color: var(--color-delete-hover);
 }
 
 .todo-list:empty {
-    background-color: white;
-    min-height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-family: 'Viaoda Libre', serif;
+  background-color: var(--color-white);
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-family: var(--font-primary);
 }
 
 .todo-list:empty::before {
-    content: "не найдено дел";
-    text-align: center;
-    font-style: italic;
-    padding: 2rem;
+  content: "не найдено дел";
+  text-align: center;
+  font-style: italic;
+  padding: 2rem;
 }
 
 .footer {
-    flex-shrink: 0;
-    border-top: 3px solid white;
-    color: white;
-    font-family: 'Quintessential', cursive;
-    font-size: 1.3rem;
-    text-align: center;
-    padding: 1.2rem 0.5rem;
-    margin-top: auto;
-    background-color: transparent;
-    width: 100%;
+  flex-shrink: 0;
+  border-top: var(--footer-border) solid var(--color-white);
+  color: var(--color-white);
+  font-family: var(--font-accent);
+  font-size: 1.3rem;
+  text-align: center;
+  padding: var(--spacing-xl) 0.5rem;
+  margin-top: auto;
+  background-color: transparent;
+  width: 100%;
 }
 
 form {
-    display: contents;
-}
+  display: contents;
+}/*# sourceMappingURL=styles.css.map */
