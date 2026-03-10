@@ -91,7 +91,6 @@ body {
 }
 
 .input-section {
-    flex-shrink: 0;
     display: flex;
     justify-content: center;
     padding: var(--spacing-xl) 1rem;
@@ -99,13 +98,18 @@ body {
 
 .input-group {
     display: flex;
+    justify-content: center;
+    align-content: center;
     flex-wrap: wrap;
     max-width: 80vw;
     width: 100%;
 }
 
 .input-group input[type="text"] {
-    flex: 1 1 50vw;
+    max-width: 40rem;
+    min-width: 20rem;
+    padding: 14px 28px;
+    flex: 0 0 30rem;
     padding-left: 1rem;
     border: none;
     background: var(--color-white);
@@ -214,7 +218,6 @@ body {
 
 .todo-item::before {
     content: "";
-    border-radius: 4px;
     display: inline-block;
     flex-shrink: 0;
     box-sizing: border-box;
@@ -321,7 +324,6 @@ body {
 
 
 .footer {
-    flex-shrink: 0;
     border-top: var(--footer-border) solid var(--color-white);
     color: var(--color-white);
     font-family: var(--font-accent);
