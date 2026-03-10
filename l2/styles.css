@@ -1,268 +1,269 @@
 * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    background-image: url("https://i.pinimg.com/736x/33/e0/ee/33e0ee4a680e8157d58385336800aede.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: soft-light;
+    background-color: #1e4a4a;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: 'Viaoda Libre', serif;
+    position: relative;
+}
+
+@media screen and (min-width: 769px) {
     body {
-        background-image: url("https://i.pinimg.com/736x/33/e0/ee/33e0ee4a680e8157d58385336800aede.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-blend-mode:soft-light;
-        background-color: #1e4a4a;       
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        font-family: 'Viaoda Libre', serif;
-        position: relative;
-    }
-    
-    @media screen and (min-width: 769px) {
-    body {
-        background-repeat: repeat; 
-        background-size: auto; 
+        background-repeat: repeat;
+        background-size: auto;
     }
 }
 
-    .page-header {
-        flex-shrink: 0; 
-        text-align: center;
-    }
+.page-header {
+    flex-shrink: 0;
+    text-align: center;
+}
 
-    .page-header h1 {
-        color: white;
-        font-family: 'Rampart One', cursive; 
-        font-size: clamp(3rem, 5rem, 6rem); 
-        letter-spacing: -2rem;
-        word-spacing: 3rem;
-        margin: 0;
-    }
+.page-header h1 {
+    color: white;
+    font-family: 'Rampart One', cursive;
+    font-size: clamp(3rem, 5rem, 6rem);
+    letter-spacing: -2rem;
+    word-spacing: 3rem;
+    margin: 0;
+}
 
-    .logo {
-        width: fit-content;
-        height: 4rem;
-        border-radius: 2rem;
-        align-self: center;
-    }
+.logo {
+    width: fit-content;
+    height: 4rem;
+    border-radius: 2rem;
+    align-self: center;
+}
 
-    .input-section {
-        flex-shrink: 0; 
-        display: flex;
-        justify-content: center;
-        padding: 1.2rem 1rem;
-    }
+.input-section {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    padding: 1.2rem 1rem;
+}
 
-    .input-group {
-      display: flex;
-      flex-wrap: wrap;
-      max-width: 80vw;
-      width: 100%;
-    }
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 80vw;
+    width: 100%;
+}
 
-    .input-group input[type="text"] {
-      flex: 1 1 50vw;
-      padding-left: 1rem;
-      border: none;
-      background: white;
-      font-family: 'Viaoda Libre', serif;
-      font-size: 1.3rem;
-      outline: none;
-      color: #1e3d3d;
-    }
+.input-group input[type="text"] {
+    flex: 1 1 50vw;
+    padding-left: 1rem;
+    border: none;
+    background: white;
+    font-family: 'Viaoda Libre', serif;
+    font-size: 1.3rem;
+    outline: none;
+    color: #1e3d3d;
+}
 
-    .button-cluster {
-      display: flex;
-      flex: 0 1 auto;
-    }
+.button-cluster {
+    display: flex;
+    flex: 0 1 auto;
+}
 
-    .button-cluster button {
-      border: none;
-      padding: 14px 28px;
-      font-family: 'Viaoda Libre', serif;
-      font-size: 1.3rem;
-      color: white;
-      transition: filter 0.1s ease;
-      cursor: pointer;
-      margin: 0;                     
-      border-radius: 0;
-    }
+.button-cluster button {
+    border: none;
+    padding: 14px 28px;
+    font-family: 'Viaoda Libre', serif;
+    font-size: 1.3rem;
+    color: white;
+    transition: filter 0.1s ease;
+    cursor: pointer;
+    margin: 0;
+    border-radius: 0;
+}
 
-    .button-cluster button[type="submit"] {
-      background-color: #6f7c7c;      
-    }
+.button-cluster button[type="submit"] {
+    background-color: #6f7c7c;
+}
 
-    .button-cluster button[type="reset"] {
-      background-color: #b13e3e;      
-    }
+.button-cluster button[type="reset"] {
+    background-color: #b13e3e;
+}
 
-    .button-cluster button:hover {
-      filter: brightness(1.1);
-    }
+.button-cluster button:hover {
+    filter: brightness(1.1);
+}
 
-    .button-cluster button:active {
-      filter: brightness(0.9);
-    }
+.button-cluster button:active {
+    filter: brightness(0.9);
+}
 
-    .todo-list-container {
-      flex: 1 1 auto;
-      display: flex;
-      justify-content: center;
-      padding: 0 1rem 1.5rem;
-    }
+.todo-list-container {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem 1.5rem;
+}
 
-    .todo-list {
-      width: 100%;
-      max-width: 50vw;
-      background-color: transparent;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      max-height: 60dvh;
-      overflow-y: auto;
-      vertical-align: middle;
-    }
+.todo-list {
+    width: 100%;
+    max-width: 50vw;
+    background-color: transparent;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    max-height: 60dvh;
+    overflow-y: auto;
+    vertical-align: middle;
+}
 
-    .todo-list li {
-      background-color: white;
-      display: flex;
-      align-items: center;
-      padding: 10px 15px 20px 10px;
-      gap: 10px;
-      transition: background-color 0.2s, color 0.2s;
-      min-height: 70px;
-      width: 100%;
-    }
+.todo-list li {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px 20px 10px;
+    gap: 10px;
+    transition: background-color 0.2s, color 0.2s;
+    min-height: 70px;
+    width: 100%;
+}
 
-    .todo-list li:hover{
-        background-color: #d5e6e6;
-    }
+.todo-list li:hover {
+    background-color: #d5e6e6;
+}
 
-    .todo-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 1;
-      min-width: 0;
-    }
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
 
 
-    .todo-item input[type="checkbox"] {
-      appearance: none;
-      width: 26px;
-      height: 26px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      margin: 0;
-    }
+.todo-item input[type="checkbox"] {
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0;
+}
 
-    .todo-item input[type="checkbox"]:checked::after {
-      content: "✓";
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-    }
+.todo-item input[type="checkbox"]:checked::after {
+    content: "✓";
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
 
-    .task-content {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      min-width: 0; 
-      margin-right: 2rem;
-    }
+.task-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    margin-right: 2rem;
+}
 
-    .task-text {
-      font-size: 1.4rem;
-      font-family: 'Viaoda Libre', serif;
-      color: #1a3636;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;          /* обрезаем длинный текст, узнать почему . вместо ... */
-      max-width: 100%;
-    }
+.task-text {
+    font-size: 1.4rem;
+    font-family: 'Viaoda Libre', serif;
+    color: #1a3636;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* обрезаем длинный текст, узнать почему . вместо ... */
+    max-width: 100%;
+}
 
-    .task-date {
-      font-size: 0.85rem;
-      font-family: 'Quintessential', cursive;
-      color: #8f9e9e;                  
-      margin-top: 2px;
-    }
+.task-date {
+    font-size: 0.85rem;
+    font-family: 'Quintessential', cursive;
+    color: #8f9e9e;
+    margin-top: 2px;
+}
 
-    .delete-cross {
-      font-size: 2rem;
-      font-weight: 300;
-      color: black;
-      cursor: pointer;
-      line-height: 1;
-      flex-shrink: 0;
-      transition: color 0.1s;
-      font-family: 'Quintessential', serif;
-      user-select: none;
-      width: 30px;
-      text-align: center;
-    }
+.delete-cross {
+    font-size: 2rem;
+    font-weight: 300;
+    color: black;
+    cursor: pointer;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: color 0.1s;
+    font-family: 'Quintessential', serif;
+    user-select: none;
+    width: 30px;
+    text-align: center;
+}
 
-    .delete-cross:hover {
-      color: #8b0000;
-    }
+.delete-cross:hover {
+    color: #8b0000;
+}
 
-    
-    .todo-list li:has(input[type="checkbox"]:checked) {
-      background-color: #60a78f;
-    }
 
-    .todo-list li:has(input[type="checkbox"]:checked) .task-text {
-      color: white;
-      text-decoration: line-through;
-      text-decoration-thickness: 2px;
-    }
+.todo-list li:has(input[type="checkbox"]:checked) {
+    background-color: #60a78f;
+}
 
-    .todo-list li:has(input[type="checkbox"]:checked) .task-date {
-      color: #dddddd;
-    }
+.todo-list li:has(input[type="checkbox"]:checked) .task-text {
+    color: white;
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+}
 
-    .todo-list li:has(input[type="checkbox"]:checked) .delete-cross {
-      color: #ffffff;                     
-    }
+.todo-list li:has(input[type="checkbox"]:checked) .task-date {
+    color: #dddddd;
+}
 
-    .todo-list li:has(input[type="checkbox"]:checked) .delete-cross:hover {
-      color: #ff809c;
-    }
+.todo-list li:has(input[type="checkbox"]:checked) .delete-cross {
+    color: #ffffff;
+}
 
-    .todo-list:empty {
-      background-color: white;
-      min-height: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      font-family: 'Viaoda Libre', serif;
-    }
+.todo-list li:has(input[type="checkbox"]:checked) .delete-cross:hover {
+    color: #ff809c;
+}
 
-    .todo-list:empty::before {
-      content: "не найдено дел";
-      text-align: center;
-      font-style: italic;
-      padding: 2rem;
-    }
+.todo-list:empty {
+    background-color: white;
+    min-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-family: 'Viaoda Libre', serif;
+}
+
+.todo-list:empty::before {
+    content: "не найдено дел";
+    text-align: center;
+    font-style: italic;
+    padding: 2rem;
+}
 
 .footer {
-    flex-shrink: 0; 
+    flex-shrink: 0;
     border-top: 3px solid white;
     color: white;
     font-family: 'Quintessential', cursive;
     font-size: 1.3rem;
     text-align: center;
     padding: 1.2rem 0.5rem;
-    margin-top: auto; 
+    margin-top: auto;
     background-color: transparent;
     width: 100%;
 }
 
-    form {
-      display: contents;
-    }
+form {
+    display: contents;
+}
