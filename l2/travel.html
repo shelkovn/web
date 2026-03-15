@@ -29,23 +29,32 @@
         <div class="about-region">
             <h2> Карта регионов</h2>
 
-            <h3> Гора Бибаяма</h3>
-            <p>Очень горно-снежная гора. Белая. Есть ёлки. Рекомендуем. Но холодно.</p>
-
-            <h3> Лес моховичковый </h3>
-            <p>Немного болотистый. Расслабляет. Красивые цветы. Для семейного отдыха. Советуем оформить страховку от белок.</p>
-            
-            <h3> Озеро водное </h3>
-            <p>Много воды. Иногда с рыбами. Иногда с утками.</p>
-            
-            <h3> Море винное </h3>
-            <p>Для парусного спорта. Можно увидеть дельфинов. Зеленых и чешучатых. Однозначно не драконы.</p>
+            <div id="selected-region" class="selected-region">
+                <h3 id="region-title">Выберите регион</h3>
+                <p id="region-description">Нажмите на кнопку ниже, чтобы узнать подробнее</p>
+            </div>
             
             <div class="region-buttons">
-                <button class="default-button"> Горы </button>
-                <button class="default-button"> Лес </button>
-                <button class="default-button"> Озеро </button>
-                <button class="default-button"> Море </button>
+                <button class="region-button" 
+                        data-region-title="Гора Бибаяма"
+                        data-region-description="Очень горно-снежная гора. Белая. Есть ёлки. Рекомендуем. Но холодно.">
+                    Горы
+                </button>
+                <button class="region-button"
+                        data-region-title="Лес моховичковый"
+                        data-region-description="Немного болотистый. Расслабляет. Красивые цветы. Для семейного отдыха. Советуем оформить страховку от белок.">
+                    Лес
+                </button>
+                <button class="region-button"
+                        data-region-title="Озеро водное"
+                        data-region-description="Много воды. Иногда с рыбами. Иногда с утками.">
+                    Озеро
+                </button>
+                <button class="region-button"
+                        data-region-title="Море винное"
+                        data-region-description="Для парусного спорта. Можно увидеть дельфинов. Зеленых и чешуйчатых. Однозначно не драконы.">
+                    Море
+                </button>
             </div>
         </div>
             <img id="map-img" src="https://i.pinimg.com/1200x/c2/f5/65/c2f565385fcaa75e4dfb2fe1f95c626b.jpg"/>

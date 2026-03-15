@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
+// карусель
+document.addEventListener('DOMContentLoaded', function() { 
         const slides = document.querySelectorAll('.carousel-slide');
         const prevButton = document.querySelector('.carousel-button-prev');
         const nextButton = document.querySelector('.carousel-button-next');
@@ -75,4 +76,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         startAutoPlay();
+    });
+
+//карта
+    document.addEventListener('DOMContentLoaded', function() {
+        const regionButtons = document.querySelectorAll('.region-button');
+        const regionTitle = document.getElementById('region-title');
+        const regionDescription = document.getElementById('region-description');
+        
+        regionButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const title = this.dataset.regionTitle;
+                const description = this.dataset.regionDescription;
+                
+                regionTitle.style.opacity = '0';
+                regionDescription.style.opacity = '0';
+                
+                setTimeout(() => {
+                    regionTitle.textContent = title || 'Не знаем, где это';
+                    regionDescription.textContent = description || 'Не знаем, что это';
+                    regionTitle.style.opacity = '1';
+                    regionDescription.style.opacity = '1';
+                }, 200); // плавное появление
+                
+                regionButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
     });

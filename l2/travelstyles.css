@@ -130,6 +130,10 @@ section {
   box-shadow: 0 15px 40px #9f8be5;
 }
 
+#region-title, .region-description {
+  transition: all 0.3s ease;
+}
+
 .about-region {
   display: flex;
   flex-flow: column;
@@ -480,7 +484,7 @@ section {
   transition: all 0.3s ease;
 }
 
-.default-button {
+.default-button, .region-button {
   background: #9f8be5;
   color: #ffffff;
   border: none;
@@ -492,11 +496,15 @@ section {
   box-shadow: 0 5px 15px rgba(111, 80, 165, 0.2);
   font-weight: bold;
 }
-.default-button:hover {
+.default-button:hover, .region-button:hover {
   color: #f9e75c;
   background: #6b4e9e;
   transform: scale(1.02);
   box-shadow: 0 10px 25px #6b4e9e;
+}
+.default-button.active, .region-button.active {
+  background-color: #7aa5e9;
+  box-shadow: 0 0 15px rgba(111, 80, 165, 0.2);
 }
 
 #contacts {

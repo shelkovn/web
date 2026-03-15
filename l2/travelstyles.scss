@@ -199,6 +199,10 @@ section {
     }
 }
 
+#region-title, .region-description{
+    @include transition()
+}
+
 .about-region{
     display: flex;
     flex-flow: column;
@@ -567,7 +571,7 @@ section {
 }
 
 
-.default-button {
+.default-button, .region-button {
     background: map-get($colors, 'primary-medium');
     color: map-get($colors, 'white');
     border: none;
@@ -584,6 +588,11 @@ section {
         background: map-get($colors, 'primary-dark');
         transform: scale(1.02);
         box-shadow: 0 10px 25px map-get($colors, 'primary-dark');
+    }
+    
+    &.active {
+        background-color: map-get($colors, 'accent-blue' );
+        box-shadow: 0 0 15px map-get($colors, 'shadow');
     }
 }
 
