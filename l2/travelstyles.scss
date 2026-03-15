@@ -289,6 +289,13 @@ section {
     border-radius: 10px;
     overflow: hidden;
     @include box-shadow(map-get($colors, 'primary-medium'));
+    
+    &:hover{
+        .carousel-image{
+            transition: 0.5s;
+            transform: scale(1.1);
+        }
+    }
 }
 
 .carousel-slides {
@@ -537,7 +544,8 @@ section {
 
 .tour-card {
     background: map-get($colors, 'card-bg');
-    border-radius: 20px;
+    border-radius: 15px;
+    width: 20rem;
     overflow: hidden;
     @include box-shadow(map-get($colors, 'shadow'));
     @include transition();
@@ -868,6 +876,49 @@ section {
     p {
         color: map-get($colors, 'white-transparent');
     }
+}
+
+#memories {
+    @include flex-center(column);
+    padding: map-get($spacing, 'xl') map-get($spacing, 'md');
+    background:map-get($colors, 'primary-light');
+}
+
+.memories-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: map-get($spacing, 'md');
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+.memory-item {
+    flex: 0 0 auto;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 10px;
+    overflow: hidden;
+    @include box-shadow(map-get($colors, 'shadow'));
+    @include transition();
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px map-get($colors, 'primary-medium');
+        
+        .memory-image {
+            transform: scale(1.2);
+        }
+    }
+}
+
+.memory-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include transition();
+    display: block;
 }
 
 .contact-info {
