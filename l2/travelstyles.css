@@ -108,24 +108,34 @@ section {
 }
 
 #map {
+  width: 100%;
+  max-width: 90dvw;
   display: flex;
-  flex-flow: column;
+  flex-flow: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
-#map div {
+#map #map-img {
   width: 100%;
-  max-width: 90dvw;
-  height: 40dvh;
+  max-width: 30dvw;
   margin: 2rem 0;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(111, 80, 165, 0.2);
   transition: all 0.3s ease;
 }
-#map div:hover {
-  transform: scale(1.02);
+#map #map-img:hover {
+  transform: scale(1.05);
   box-shadow: 0 15px 40px #9f8be5;
+}
+
+.about-region {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: start;
+  flex: 1 1 300px;
 }
 
 #description {
@@ -230,6 +240,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(46, 0, 173, 0.2) 100%);
 }
 
@@ -469,7 +480,7 @@ section {
   transition: all 0.3s ease;
 }
 
-.contact-button {
+.default-button {
   background: #9f8be5;
   color: #ffffff;
   border: none;
@@ -481,7 +492,7 @@ section {
   box-shadow: 0 5px 15px rgba(111, 80, 165, 0.2);
   font-weight: bold;
 }
-.contact-button:hover {
+.default-button:hover {
   color: #f9e75c;
   background: #6b4e9e;
   transform: scale(1.02);
