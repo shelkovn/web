@@ -36,28 +36,45 @@
             
             <div class="region-buttons">
                 <button class="region-button" 
+                        data-circle-x="65%"
+                        data-circle-y="25%"
+                        data-circle-r="18%"
                         data-region-title="Гора Бибаяма"
                         data-region-description="Очень горно-снежная гора. Белая. Есть ёлки. Рекомендуем. Но холодно.">
                     Горы
                 </button>
                 <button class="region-button"
+                        data-circle-x="35%"
+                        data-circle-y="35%"
+                        data-circle-r="10%"
                         data-region-title="Лес моховичковый"
                         data-region-description="Немного болотистый. Расслабляет. Красивые цветы. Для семейного отдыха. Советуем оформить страховку от белок.">
                     Лес
                 </button>
                 <button class="region-button"
+                        data-circle-x="70%"
+                        data-circle-y="35%"
+                        data-circle-r="10%"
                         data-region-title="Озеро водное"
                         data-region-description="Много воды. Иногда с рыбами. Иногда с утками.">
                     Озеро
                 </button>
                 <button class="region-button"
+                        data-circle-x="20%"
+                        data-circle-y="60%"
+                        data-circle-r="15%"
                         data-region-title="Море винное"
                         data-region-description="Для парусного спорта. Можно увидеть дельфинов. Зеленых и чешуйчатых. Однозначно не драконы.">
                     Море
                 </button>
             </div>
         </div>
-            <img id="map-img" src="https://i.pinimg.com/1200x/c2/f5/65/c2f565385fcaa75e4dfb2fe1f95c626b.jpg"/>
+            <div class="map-image-container">
+                <img id="map-img" src="https://i.pinimg.com/1200x/c2/f5/65/c2f565385fcaa75e4dfb2fe1f95c626b.jpg" alt="Карта регионов"/>
+                <svg class="map-overlay" preserveAspectRatio="none">
+                    <circle id="region-circle" fill="none" stroke="white" stroke-width="3"/>
+                </svg>
+            </div>
     </section>
 
     <section id="description">
