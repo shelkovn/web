@@ -513,6 +513,116 @@ section {
     }
 }
 
+#reviews {
+    @include flex-center(column);
+    padding: map-get($spacing, 'xl') map-get($spacing, 'md');
+    
+    h2 {
+        margin-bottom: map-get($spacing, 'xs');
+    }
+}
+
+.reviews-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: map-get($spacing, 'lg');
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+.review-card {
+    max-width: 20rem;
+    background: map-get($colors, 'card-bg');
+    border-radius: 20px;
+    padding: map-get($spacing, 'lg');
+    @include box-shadow(map-get($colors, 'shadow'));
+    @include transition();
+    
+    &:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 30px map-get($colors, 'primary-medium');
+        
+        .review-avatar {
+            transform: scale(1.3) rotate(5deg);
+        }
+        
+        .review-author {
+            color: map-get($colors, 'primary-dark');
+        }
+    }
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: map-get($spacing, 'md');
+    margin-bottom: map-get($spacing, 'md');
+    border-bottom: 2px solid map-get($colors, 'primary-light');
+    padding-bottom: map-get($spacing, 'sm');
+}
+
+.review-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid map-get($colors, 'primary-medium');
+    @include transition();
+    
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: map-get($colors, 'primary-light');
+        border-radius: 5%;
+    }
+}
+
+.review-meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-author {
+    font-size: 1.3rem;
+    font-family: map-get($fonts, 'forksa'), cursive;
+    color: map-get($colors, 'primary-medium');
+    margin: 0;
+    line-height: 1.2;
+    @include transition();
+}
+
+.review-date {
+    font-size: 0.9rem;
+    color: map-get($colors, 'gray-light');
+    font-family: map-get($fonts, 'gapsans'), sans-serif;
+}
+
+.review-content {
+    position: relative;
+    
+    &::before {
+        content: '"';
+        position: absolute;
+        top: -100px;
+        left: -50px;
+        font-size: 15rem;
+        color: map-get($colors, 'primary-light');
+        font-family: map-get($fonts, 'forksa'), cursive;
+        opacity: 0.5;
+        z-index: 1;
+    }
+}
+
+.review-text {
+    color: map-get($colors, 'text-dark');
+    font-style: italic;
+}
+
 
 #faq {
     @include flex-center(column);

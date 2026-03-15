@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             regionTitle.style.opacity = "0";
             regionDescription.style.opacity = "0";
-            regionCircle.style.opacity = "0";
 
             setTimeout(() => {
                 regionTitle.textContent = title || "Не знаем, где это";
