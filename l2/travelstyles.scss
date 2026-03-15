@@ -513,6 +513,136 @@ section {
     }
 }
 
+#tours {
+    @include flex-center(column);
+    padding: map-get($spacing, 'xl') map-get($spacing, 'md');
+    h2 {
+        margin-bottom: map-get($spacing, 'xs');
+    }
+}
+
+.tours-subtitle {
+    color: map-get($colors, 'primary-medium');
+    margin-bottom: map-get($spacing, 'xl');
+}
+
+.tours-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: map-get($spacing, 'lg');
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+.tour-card {
+    background: map-get($colors, 'card-bg');
+    border-radius: 20px;
+    overflow: hidden;
+    @include box-shadow(map-get($colors, 'shadow'));
+    @include transition();
+    display: flex;
+    flex-direction: column;
+    
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 30px map-get($colors, 'primary-medium');
+        
+        .tour-image {
+            transform: scale(1.15);
+        }
+    }
+}
+
+.tour-image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden; 
+    position: relative;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, 
+            rgba(map-get($colors, 'primary-dark'), 0) 50%,
+            rgba(map-get($colors, 'primary-dark'), 0.1) 100%);
+        pointer-events: none;
+    }
+}
+
+.tour-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include transition();
+}
+
+.tour-content {
+    padding: map-get($spacing, 'lg') map-get($spacing, 'md') map-get($spacing, 'md');
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tour-title {
+    font-family: map-get($fonts, 'forksa'), cursive;
+    color: map-get($colors, 'primary-dark');
+    margin: 0 0 map-get($spacing, 'xs') 0;
+}
+
+.tour-description {
+    color: map-get($colors, 'text-dark');
+    margin-bottom: map-get($spacing, 'md');
+    flex: 1;
+}
+
+.tour-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.tour-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: map-get($colors, 'primary-dark');
+    font-family: map-get($fonts, 'forksa'), cursive;
+    
+    &::before {
+        content: 'от ';
+        font-size: 0.9rem;
+        color: map-get($colors, 'primary-medium');
+        font-family: map-get($fonts, 'gapsans'), sans-serif;
+    }
+}
+
+.tour-button {
+    padding: map-get($spacing, 'xs') map-get($spacing, 'md');
+    background: map-get($colors, 'primary-medium');
+    border:none;
+    border-radius: 5px;
+    color: map-get($colors, 'white');
+    cursor: pointer;
+    @include transition();
+    font-weight: bold;
+    
+    &:hover {
+        background: map-get($colors, 'primary-dark');
+        transform: scale(1.05);
+        @include box-shadow(map-get($colors, 'primary-dark'));
+    }
+    
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+
 #reviews {
     @include flex-center(column);
     padding: map-get($spacing, 'xl') map-get($spacing, 'md');

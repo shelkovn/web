@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Forksa";
   src: url("Forksa-Regular.ttf");
@@ -427,6 +428,131 @@ section {
 }
 .facts-container li:hover::before {
   color: #f9e75c;
+}
+
+#tours {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+#tours h2 {
+  margin-bottom: 0.5rem;
+}
+
+.tours-subtitle {
+  color: #9f8be5;
+  margin-bottom: 4rem;
+}
+
+.tours-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  width: 100%;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.tour-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(111, 80, 165, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.tour-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px #9f8be5;
+}
+.tour-card:hover .tour-image {
+  transform: scale(1.15);
+}
+
+.tour-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+.tour-image-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(107, 78, 158, 0) 50%, rgba(107, 78, 158, 0.1) 100%);
+  pointer-events: none;
+}
+
+.tour-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.tour-content {
+  padding: 3rem 2rem 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-title {
+  font-family: "Forksa", cursive;
+  color: #6b4e9e;
+  margin: 0 0 0.5rem 0;
+}
+
+.tour-description {
+  color: #2d2a44;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.tour-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.tour-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6b4e9e;
+  font-family: "Forksa", cursive;
+}
+.tour-price::before {
+  content: "от ";
+  font-size: 0.9rem;
+  color: #9f8be5;
+  font-family: "GapSans", sans-serif;
+}
+
+.tour-button {
+  padding: 0.5rem 2rem;
+  background: #9f8be5;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+.tour-button:hover {
+  background: #6b4e9e;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px #6b4e9e;
+}
+.tour-button:active {
+  transform: scale(0.98);
 }
 
 #reviews {
