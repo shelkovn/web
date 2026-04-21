@@ -49,6 +49,10 @@ $breakpoints: (
     'desktop': 1024px
 );
 
+html {
+  scroll-behavior: smooth;
+}
+
 // ===== Mixins =====
 @mixin flex-center($direction: row) {
     display: flex;
