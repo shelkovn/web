@@ -2,34 +2,53 @@ function randarray(n = 10, a=0, b=10)
 {
     let arr = [];
     for (let i = 0; i < n; i++){
-        arr.push((Math.floor((Math.random()) * (b-a)) + a));
+        arr.push((Math.floor((Math.random()) * Math.abs(b-a)) + a));
     }
     return arr;
 }
+
 // Задача 1
 // Найти максимальную разницу между элементами массива.
 a = randarray();
 console.log(a)
-let max, min = numbers[0];
-for (let i = 1; i < numbers.length; i++) {
-    if (numbers[i] > max) max = numbers[i];
-    if (numbers[i] < min) min = numbers[i];
+let max = a[0], min = a[0];
+for (let i = 1; i < a.length; i++) {
+    if (a[i] > max) max = a[i];
+    if (a[i] < min) min = a[i];
 }
-console.log(min, max);
+console.log((max - min));
 
 // Вернуть массив без повторяющихся элементов.
+a = randarray(10, 1, 5);
+console.log(a)
+let b = [...new Set(a)]
+console.log(b)
+
 // Дан массив объектов, вернуть только те, у которых isDone: true.
-// [
-//     {id: 1, idDone: true}, 
-//     {id: 2, idDone: false},
-//     {id: 3, idDone: true}
-// ]
+a = [
+    {id: 1, isDone: true}, 
+    {id: 2, isDone: false},
+    {id: 3, isDone: true}
+]
+console.log(a)
+b = a.filter(i => i.isDone === true)
+console.log(b)
+
 // Задача 2
 // Найти элементы массива, которые больше указанного числа:
-// f([1, 4, 6, 3, 2], 2) -> [4, 6, 3]
+function morethan(arr, x){
+    let a = arr.filter(n => n>x);
+    return a
+}
+console.log(morethan([1, 4, 6, 3, 2], 2))
+
 // Дан многомерный массив произвольной вложенности. Написать функцию, делающую из него "плоский" массив:
-// f([1, 4, [34, 1, 20], [6, [6, 12, 8], 6]]) -> 
-// [1, 4, 34, 1, 20, 6, 6, 12, 8, 6]
+function flatten(arr) {
+  return arr.reduce((acc, item) => 
+    acc.concat(Array.isArray(item) ? flatten(item) : item), []);
+}
+console.log(flatten([1, 4, [34, 1, 20], [6, [6, 12, 8], 6]]))
+
 // Задача 3
 // Найти, сколько есть в массиве пар чисел, дающих в сумме 0:
 // f([-7, 12, 4, 6, -4, -12, 0]) -> 2 
