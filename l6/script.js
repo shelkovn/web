@@ -58,4 +58,19 @@ console.log(flatten([1, 4, [34, 1, 20], [6, [6, 12, 8], 6]]))
 // f([1, 1, 1, 0, -1]) -> 1
 // f([0, 0]) -> 1 
 // f([]) -> 0 
+function pairzero (arr){
+    let buff = arr.filter(n => n!==0); // убираем нули
+    let c = 0;
+    c += Math.floor((arr.length - buff.length)/2) //сразу вносим количество парных нулей
+    for (n of buff){
+        if (buff.indexOf(-n) !== -1) //если имеется отрицательная пара текущему числу
+        {
+            buff.splice(a.indexOf(n),1); //удаляем их обоих чтобы не считать дважды
+            buff.splice(a.indexOf(-n),1); 
+            c++; // обновляем счетчик
+        }
+    }
+    return c
+}
+console.log(pairzero([0, 0]))
 // То же самое, но найти количество троек таких чисел.
