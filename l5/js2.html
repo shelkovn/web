@@ -6,7 +6,70 @@
     <title>Document</title>
     <script src="script.js"></script>
 </head>
-<body>
-    
+<h1>Лабораторная работа: Функции JS</h1>
+
+    <!-- Задание 1.1: Разворот числа -->
+    <section>
+        <h3>Задание 1.1: Развернуть число</h3>
+        <input type="number" id="inputReverse" placeholder="Введите число">
+        <button onclick="uiReverse()">Выполнить</button>
+        <p>Результат: <span id="resReverse"></span></p>
+    </section>
+
+    <!-- Задание 1.2: Уникальные цифры -->
+    <section>
+        <h3>Задание 1.2: Оставить уникальные цифры</h3>
+        <input type="number" id="inputUnique" placeholder="Введите число">
+        <button onclick="uiUnique()">Выполнить</button>
+        <p>Результат: <span id="resUnique"></span></p>
+    </section>
+
+    <!-- Задание 1.3: Счёт вхождений -->
+    <section>
+        <h3>Задание 1.3: Посчитать вхождения цифры</h3>
+        <input type="number" id="inputCountN" placeholder="Число">
+        <input type="number" id="inputCountX" placeholder="Цифра" style="width: 50px;">
+        <button onclick="uiCount()">Выполнить</button>
+        <p>Результат: <span id="resCount"></span></p>
+    </section>
+
+    <!-- Задание 1.4: Двоичная последовательность -->
+    <section>
+        <h3>Задание 1.4: Макс. последовательность в двоичной записи</h3>
+        <input type="number" id="inputBin" placeholder="Введите число">
+        <button onclick="uiBinary()">Выполнить</button>
+        <p>Результат: <span id="resBin"></span></p>
+    </section>
+
+    <!-- Задание 2.1: Первый неповторяющийся -->
+    <section>
+        <h3>Задание 2.1: Первый неповторяющийся символ</h3>
+        <input type="text" id="inputFirstUnique" placeholder="Введите строку">
+        <button onclick="uiFirstUnique()">Выполнить</button>
+        <p>Результат: <span id="resFirstUnique"></span></p>
+    </section>
+
+    <!-- Задание 2.2: Генератор строки -->
+    <section>
+        <h3>Задание 2.2: Случайная строка</h3>
+        <input type="number" id="inputRandLen" placeholder="Длина">
+        <button onclick="uiRandom()">Выполнить</button>
+        <p>Результат: <span id="resRandom"></span></p>
+    </section>
+
+    <!-- Задание 2.3: Уникальные символы строки -->
+    <section>
+        <h3>Задание 2.3: Уникальные символы строки</h3>
+        <input type="text" id="inputUniqueStr" placeholder="Введите строку">
+        <button onclick="uiUniqueStr()">Выполнить</button>
+        <p>Результат: <span id="resUniqueStr"></span></p>
+    </section>
+
+    <style>
+        section { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 8px; font-family: sans-serif; }
+        input { padding: 5px; }
+        button { padding: 5px 15px; cursor: pointer; background: #e0e0e0; border: 1px solid #999; }
+        span { font-weight: bold; color: blue; }
+    </style>
 </body>
 </html>
