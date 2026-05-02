@@ -1,3 +1,4 @@
+//вспомогательные функции
 function randarray(n = 10, a = 0, b = 10) {
     let arr = [];
     for (let i = 0; i < n; i++) {
@@ -6,72 +7,56 @@ function randarray(n = 10, a = 0, b = 10) {
     return arr;
 }
 
-// Задача 1
-// Найти максимальную разницу между элементами массива.
-a = randarray();
-console.log(a)
-let max = a[0], min = a[0];
-for (let i = 1; i < a.length; i++) {
-    if (a[i] > max) max = a[i];
-    if (a[i] < min) min = a[i];
+function parseArr(id) {
+    return document.getElementById(id).value.split(', ').map(Number);
 }
-console.log((max - min));
 
-// Вернуть массив без повторяющихся элементов.
-a = randarray(10, 1, 5);
-console.log(a)
-let b = [...new Set(a)]
-console.log(b)
+// Задачи
+function randarray(n = 10, a = 0, b = 10) {
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+        arr.push(Math.floor(Math.random() * (b - a)) + a);
+    }
+    return arr;
+}
 
-// Дан массив объектов, вернуть только те, у которых isDone: true.
-a = [
-    { id: 1, isDone: true },
-    { id: 2, isDone: false },
-    { id: 3, isDone: true }
-]
-console.log(a)
-b = a.filter(i => i.isDone === true)
-console.log(b)
+function getMaxDiff(a) {
+    let max = a[0], min = a[0];
+    for (let i = 1; i < a.length; i++) {
+        if (a[i] > max) max = a[i];
+        if (a[i] < min) min = a[i];
+    }
+    return max - min;
+}
 
-// Задача 2
-// Найти элементы массива, которые больше указанного числа:
 function morethan(arr, x) {
-    let a = arr.filter(n => n > x);
-    return a
+    return arr.filter(n => n > x);
 }
-console.log(morethan([1, 4, 6, 3, 2], 2))
 
-// Дан многомерный массив произвольной вложенности. Написать функцию, делающую из него "плоский" массив:
 function flatten(arr) {
     return arr.reduce((acc, item) =>
         acc.concat(Array.isArray(item) ? flatten(item) : item), []);
 }
-console.log(flatten([1, 4, [34, 1, 20], [6, [6, 12, 8], 6]]))
 
-// Задача 3
-// Найти, сколько есть в массиве пар чисел, дающих в сумме 0:
-// f([-7, 12, 4, 6, -4, -12, 0]) -> 2 
-// f([-1, 2, 4, 7, -4, 1, -2]) -> 3
-// f([-1, 1, 0, 1]) -> 1
-// f([-1, 1, -1, 1]) -> 2
-// f([1, 1, 1, 0, -1]) -> 1
-// f([0, 0]) -> 1 
-// f([]) -> 0 
 function pairzero(arr) {
-    let buff = arr.filter(n => n !== 0); // убираем нули
-    let c = 0;
-    c += Math.floor((arr.length - buff.length) / 2) //сразу вносим количество парных нулей
-    for (n of buff) {
-        if (buff.indexOf(-n) !== -1) //если имеется отрицательная пара текущему числу
-        {
-            buff.splice(a.indexOf(n), 1); //удаляем их обоих чтобы не считать дважды
-            buff.splice(a.indexOf(-n), 1);
-            c++; // обновляем счетчик
+    let buff = arr.filter(n => n !== 0); 
+    let c = Math.floor((arr.length - buff.length) / 2);
+    
+    // Используем while, так как splice меняет длину массива во время цикла
+    let i = 0;
+    while (i < buff.length) {
+        let n = buff[i];
+        let pairIndex = buff.indexOf(-n, i + 1);
+        if (pairIndex !== -1) {
+            buff.splice(pairIndex, 1);
+            buff.splice(i, 1);
+            c++;
+        } else {
+            i++;
         }
     }
-    return c
+    return c;
 }
-console.log(pairzero([0, 0]))
 
 // То же самое, но найти количество троек таких чисел.
 function getUniqueTrios(nums) {
@@ -124,7 +109,7 @@ function findTrios(nums) {
         return minRarity1 - minRarity2;
     });
 
-    // 4. Собираем результат
+    // собираем результат
     const result = [];
     for (let trio of possibleTrios) {
         const [a, b, c] = trio;
@@ -157,5 +142,32 @@ function findTrios(nums) {
     return result;
 }
 
-const myNums = [-5, -4, -1, 2, 3, 5, 0, 0, 0, -1, 1, 0]; // это жадный алгоритм, и возможно ответ не оптимальный
-console.log(findTrios(myNums));
+// --- ФУНКЦИИ ИНТЕРФЕЙСА ---
+
+function uiMaxDiff() {
+    const a = randarray(10, 1, 100);
+    document.getElementById('arrMaxDiff').innerText = `[${a.join(', ')}]`;
+    document.getElementById('resMaxDiff').innerText = getMaxDiff(a);
+}
+
+function uiMoreThan() {
+    const arr = parseArr('inputMoreArr');
+    const x = Number(document.getElementById('inputMoreX').value);
+    document.getElementById('resMoreThan').innerText = JSON.stringify(morethan(arr, x));
+}
+
+function uiFlatten() {
+    const complex = [1, 4, [34, 1, 20], [6, [6, 12, 8], 6]];
+    document.getElementById('resFlatten').innerText = JSON.stringify(flatten(complex));
+}
+
+function uiPairZero() {
+    const arr = parseArr('inputPairArr');
+    document.getElementById('resPairZero').innerText = pairzero(arr);
+}
+
+function uiFindTrios() {
+    const arr = parseArr('inputTrioArr');
+    const result = findTrios(arr);
+    document.getElementById('resTrios').innerText = result.map(t => `[${t}]`).join(' ');
+}

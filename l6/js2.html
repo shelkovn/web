@@ -7,6 +7,49 @@
     <script src="script.js"></script>
 </head>
 <body>
-    
+    <hr>
+<h2>Работа с массивами</h2>
+
+<!-- Задача 1.1: Макс. разница -->
+<section>
+    <h3>Задача 1.1: Максимальная разница в массиве</h3>
+    <button onclick="uiMaxDiff()">Сгенерировать случайный массив и найти разницу</button>
+    <p>Массив: <span id="arrMaxDiff"></span></p>
+    <p>Разница (Max - Min): <span id="resMaxDiff"></span></p>
+</section>
+
+<!-- Задача 2.1: Больше чем X -->
+<section>
+    <h3>Задача 2.1: Числа больше чем X</h3>
+    <input type="text" id="inputMoreArr" placeholder="1, 5, 10, 3" value="1, 4, 6, 3, 2">
+    <input type="number" id="inputMoreX" placeholder="X" style="width: 50px;" value="2">
+    <button onclick="uiMoreThan()">Найти</button>
+    <p>Результат: <span id="resMoreThan"></span></p>
+</section>
+
+<!-- Задача 2.2: Плоский массив -->
+<section>
+    <h3>Задача 2.2: Плоский массив (из вложенного)</h3>
+    <p>Вход: [1, [2, [3, 4]], 5]</p>
+    <button onclick="uiFlatten()">Преобразовать пример</button>
+    <p>Результат: <span id="resFlatten"></span></p>
+</section>
+
+<!-- Задача 3.1: Пары в сумме 0 -->
+<section>
+    <h3>Задача 3.1: Кол-во пар, дающих в сумме 0</h3>
+    <input type="text" id="inputPairArr" placeholder="-1, 1, 0, 0" value="-7, 12, 4, 6, -4, -12, 0, 0">
+    <button onclick="uiPairZero()">Посчитать пары</button>
+    <p>Результат: <span id="resPairZero"></span></p>
+</section>
+
+<!-- Задача 3.2: Тройки в сумме 0 -->
+<section>
+    <h3>Задача 3.2: Тройки, дающие в сумме 0</h3>
+    <input type="text" id="inputTrioArr" value="-5, -4, -1, 2, 3, 5, 0, 0, 0, -1, 1, 0">
+    <button onclick="uiFindTrios()">Найти тройки</button>
+    <p>Результат: <span id="resTrios"></span></p>
+</section>
+
 </body>
 </html>
