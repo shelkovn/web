@@ -54,41 +54,77 @@ function createCounter(n) {
 //test.start();
 
 //Задача 2 (на промисы)
+//Написать функцию delay(N), возвращающую промис, который сделает resolve() через N секунд.
+function delay(n)
+{
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(`fulfilled in ${n}s`);
+        }, n*1000);
+    });
+}
+//p = delay(10);
+//p.then(result => {console.log(result);})
 
-// UI
+//Решить задачу со счётчиком N, N-1 ... 2, 1, 0 через функцию delay.
+function counterDelay(n)
+{
+    let i = Number(n);
+    let counterTimer = setInterval(() => {
+        console.log(i--);
+    }, 1000);
+    p = delay(n+1); // +1 потому что ноль
+    p.then(() => {clearInterval(counterTimer)});
+}
+ //counterDelay(10)
 
-function uiReverse() {
-    const val = document.getElementById('inputReverse').value;
-    document.getElementById('resReverse').innerText = reverse(val);
+//TODO Написать функцию, возвращающую название первого репозитория на github.com по имени
+//пользователя (2 последовательных запроса: https://api.github.com/users/%USERNAME%).
+
+
+//Задача 3 (на async/await)
+//Перепишите, используя async/await вместо .then/catch.
+
+//TODO В функции getGithubUser замените рекурсию на цикл, используя async/await.
+
+class HttpError extends Error {
+  constructor(response) {
+    super(`${response.status} for ${response.url}`);
+    this.name = 'HttpError';
+    this.response = response;
+  }
 }
 
-function uiUnique() {
-    const val = document.getElementById('inputUnique').value;
-    document.getElementById('resUnique').innerText = unique(val);
+function loadJson(url) {
+  return fetch(url)
+    .then(response => {
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        throw new HttpError(response);
+      }
+    })
 }
 
-function uiCount() {
-    const n = document.getElementById('inputCountN').value;
-    const x = document.getElementById('inputCountX').value;
-    document.getElementById('resCount').innerText = count(n, x);
+// Запрашивается логин, пока github не вернёт существующего пользователя.
+function getGithubUser() {
+  let name = prompt("Введите логин?", "iliakan");
+
+  return loadJson(`https://api.github.com/users/${name}`)
+    .then(user => {
+      alert(`Полное имя: ${user.name}.`);
+      return user;
+    })
+    .catch(err => {
+      if (err instanceof HttpError && err.response.status == 404) {
+        alert("Такого пользователя не существует, пожалуйста, повторите ввод.");
+        return demoGithubUser();
+      } else {
+        throw err;
+      }
+    });
 }
 
-function uiBinary() {
-    const val = document.getElementById('inputBin').value;
-    document.getElementById('resBin').innerText = `${countbinary(val)} (for ${Number(val).toString(2)})`;
-}
+getGithubUser();
 
-function uiFirstUnique() {
-    const val = document.getElementById('inputFirstUnique').value;
-    document.getElementById('resFirstUnique').innerText = firstunique(val);
-}
-
-function uiRandom() {
-    const val = document.getElementById('inputRandLen').value;
-    document.getElementById('resRandom').innerText = random(val);
-}
-
-function uiUniqueStr() {
-    const val = document.getElementById('inputUniqueStr').value;
-    document.getElementById('resUniqueStr').innerText = uniquestr(val);
-}
+//TODO UI
