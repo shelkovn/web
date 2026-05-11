@@ -30,10 +30,26 @@
     </section>
 
     <section>
-        <label>Задание 2.2: Поиск репозитория</label>
+        <label>Задание 2.1: Промис Delay</label>
+        <div class="row">
+            <input type="number" id="delaySeconds" value="3" placeholder="сек.">
+            <button onclick="uiDelay()">Запустить ожидание</button>
+        </div>
+    </section>
+
+    <section>
+        <label>Задание 2.2: Счетчик через delay (N...0)</label>
+        <div class="row">
+            <input type="number" id="nDelayCounter" value="5" placeholder="n">
+            <button onclick="uiCounterDelay()">Запустить отсчет</button>
+        </div>
+    </section>
+
+    <section>
+        <label>Задание 2.3: Поиск репозитория</label>
         <div class="row">
             <input type="text" id="ghUser" value="dmitryweiner" placeholder="username">
-            <button onclick="checkUserAndGetRepo(document.getElementById('ghUser').value).then(res => console.log('Итог:', res))">Найти репо</button>
+            <button onclick="checkUserAndGetRepo(document.getElementById('ghUser').value).then(res => console.log('getrepo result:', res))">Найти репо</button>
         </div>
     </section>
 

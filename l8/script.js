@@ -33,22 +33,35 @@ function uiPause() {
 function uiStop() {
     if (activeCounter) {
         activeCounter.stop();
-        activeCounter = null; // Чтобы при следующем старте создался новый с новым N
+        activeCounter = null;
     }
 }
 
+async function uiDelay() {
+    const n = Number(document.getElementById('delaySeconds').value);
+    console.log(`awaiting promise ${n} s...`);
+    const result = await delay(n);
+    console.log(`result: ${result}`);
+}
+
+async function uiCounterDelay() {
+    const n = Number(document.getElementById('nDelayCounter').value);
+    console.log(`delay based counter started (${n} s)`);
+    counterDelay(n); 
+}
+
 async function uiGetGithubUser() {
-    console.log("Система: Ожидание ввода логина в окне браузера...");
+    console.log("awaiting user input...");
     try {
-        const user = await getGithubUser(); // Твоя оригинальная функция
+        const user = await getGithubUser();
         if (user) {
-            console.log("Система: Пользователь успешно получен!");
-            //console.log(user); // Выведет весь объект в нашу консоль благодаря JSON.stringify в перехвате
+            console.log("github username fetched!");
+            //console.log(user); // Выведет весь объект в консоль
         } else {
-            console.log("Система: Ввод был отменен пользователем.");
+            console.log("getgithubuser canceled by user");
         }
     } catch (err) {
-        console.log("Система: Произошла критическая ошибка:", err.message);
+        console.log("an error occured: ", err.message);
     }
 }
 
@@ -115,7 +128,7 @@ function delay(n)
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(`fulfilled in ${n}s`);
-        }, n*1000);
+        }, Number(n)*1000);
     });
 }
 //p = delay(10);
@@ -128,8 +141,15 @@ function counterDelay(n)
     let counterTimer = setInterval(() => {
         console.log(i--);
     }, 1000);
-    p = delay(n+1); // +1 потому что ноль
+    p = delay(Number(n)+1); // +1 потому что ноль
     p.then(() => {clearInterval(counterTimer)});
+}
+// возможно ожидался такой вариант?
+async function trueCounterDelay(n) {
+    for (let i = n; i >= 0; i--) {
+        console.log(i);
+        await delay(1); // Ждем 1 секунду перед следующей цифрой
+    }
 }
  //counterDelay(10)
 
@@ -145,20 +165,20 @@ async function checkUserAndGetRepo(username) {
     }
     
     const userData = await userResponse.json();
-    console.log("Пользователь найден:", userData.login);
+    console.log("found user:", userData.login);
 
     const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=1`);
     const repos = await reposResponse.json();
 
     if (repos.length > 0) {
-      console.log("Репозиторий найден")
+      console.log("repo hit")
       return `found repo ${repos[0].name} by ${username}`;
     } else {
-      console.log("У пользователя нет публичных репозиториев");
+      console.log("no public repo found");
       return `user ${username} has no public repos`
     }
   } catch (error) {
-    console.error("Ошибка при запросе:", error);
+    console.error("an error occured:", error);
     return null;
   }
 }
