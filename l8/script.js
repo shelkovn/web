@@ -1,3 +1,57 @@
+//ПЕРЕХВАТ КОНСОЛИ
+(function() {
+    const oldLog = console.log;
+    console.log = function(...args) {
+        oldLog.apply(console, args);
+        const output = document.getElementById('console-output');
+        if (output) {
+            const line = document.createElement('div');
+            line.style.marginBottom = '4px';
+            line.innerText = `> ${args.map(a => typeof a === 'object' ? JSON.stringify(a) : a).join(' ')}`;
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+    };
+})();
+
+//STORED COUNTER
+let activeCounter = null;
+
+//UI
+function uiStart() {
+    if (!activeCounter) {
+        const n = document.getElementById('nCreateCounter').value;
+        activeCounter = createCounter(Number(n));
+    }
+    activeCounter.start();
+}
+
+function uiPause() {
+    if (activeCounter) activeCounter.pause();
+}
+
+function uiStop() {
+    if (activeCounter) {
+        activeCounter.stop();
+        activeCounter = null; // Чтобы при следующем старте создался новый с новым N
+    }
+}
+
+async function uiGetGithubUser() {
+    console.log("Система: Ожидание ввода логина в окне браузера...");
+    try {
+        const user = await getGithubUser(); // Твоя оригинальная функция
+        if (user) {
+            console.log("Система: Пользователь успешно получен!");
+            //console.log(user); // Выведет весь объект в нашу консоль благодаря JSON.stringify в перехвате
+        } else {
+            console.log("Система: Ввод был отменен пользователем.");
+        }
+    } catch (err) {
+        console.log("Система: Произошла критическая ошибка:", err.message);
+    }
+}
+
 // ФУНКЦИИ
 
 //Задача 1 (на таймеры)
@@ -8,10 +62,11 @@ function counter(n)
     let i = Number(n);
     let counterTimer = setInterval(() => {
         console.log(i--);
+        
     }, 1000);
     setTimeout(() => {
         clearInterval(counterTimer)
-    }, 1000*(n+1)+50); //небольшой запас 50ms чтобы 0 успел вывестись
+    }, 1000*(Number(n)+1)+50); //небольшой запас 50ms чтобы 0 успел вывестись
 }
 //counter(10);
 
@@ -78,7 +133,7 @@ function counterDelay(n)
 }
  //counterDelay(10)
 
-//TODO Написать функцию, возвращающую название первого репозитория на github.com по имени
+//Написать функцию, возвращающую название первого репозитория на github.com по имени
 //пользователя (2 последовательных запроса: https://api.github.com/users/%USERNAME%).
 async function checkUserAndGetRepo(username) {
   try {
@@ -114,9 +169,6 @@ async function checkUserAndGetRepo(username) {
 
 //Задача 3 (на async/await)
 //Перепишите, используя async/await вместо .then/catch.
-
-//const response = await fetch("https://api.github.com/users/dmitryweiner");
-//const json = await response.json();
 class HttpError extends Error {
   constructor(response) {
     super(`${response.status} for ${response.url}`);
@@ -163,5 +215,3 @@ async function getGithubUser() {
 }
 
 //getGithubUser().catch(err => console.error("error:", err));;
-
-//TODO UI

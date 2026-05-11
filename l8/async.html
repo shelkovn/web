@@ -8,11 +8,62 @@
 </head>
 <body>
 
-    <style>
-        section { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 8px; font-family: sans-serif; }
-        input { padding: 5px; width: 50vw;}
-        button { padding: 5px 15px; cursor: pointer; background: #e0e0e0; border: 1px solid #999; }
-        span { font-weight: bold; color: blue; }
-    </style>
+<h2>Асинхронные задачи</h2>
+
+    <!-- Счетчик 1.1 -->
+    <section>
+        <label>Задание 1.1: Простой счетчик</label>
+        <div class="row">
+            <input type="number" id="nCounter" value="5" placeholder="n">
+            <button onclick="counter(document.getElementById('nCounter').value)">Запустить</button>
+        </div>
+    </section>
+
+    <section>
+        <label>Задание 1.2: Объект-счетчик</label>
+        <div class="row">
+            <input type="number" id="nCreateCounter" value="10" placeholder="n">
+            <button onclick="uiStart()">Start</button>
+            <button onclick="uiPause()">Pause</button>
+            <button onclick="uiStop()">Stop/Reset</button>
+        </div>
+    </section>
+
+    <section>
+        <label>Задание 2.2: Поиск репозитория</label>
+        <div class="row">
+            <input type="text" id="ghUser" value="dmitryweiner" placeholder="username">
+            <button onclick="checkUserAndGetRepo(document.getElementById('ghUser').value).then(res => console.log('Итог:', res))">Найти репо</button>
+        </div>
+    </section>
+
+    <section>
+        <label>Задание 3: Поиск до победного (async/await + prompt)</label>
+        <div class="row">
+            <button onclick="uiGetGithubUser()">Запустить поиск пользователя</button>
+        </div>
+    </section>
+
+    <div id="console-emulator">
+        <div class="console-header">Вывод консоли (Terminal):</div>
+        <div id="console-output"></div>
+        <button class="clear-btn" onclick="document.getElementById('console-output').innerHTML=''">Очистить</button>
+    </div>
+</div>
+
+<style>
+    .container { font-family: sans-serif; max-width: 600px; margin: 0 auto; }
+    section { border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 8px; background: #f9f9f9; }
+    label { display: block; margin-bottom: 8px; font-weight: bold; color: #333; }
+    .row { display: flex; gap: 8px; }
+    input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; flex-grow: 1; }
+    button { padding: 8px 15px; cursor: pointer; border-radius: 4px; border: 1px solid #999; transition: 0.2s; }
+    button:hover { background: #eee; }
+    
+    #console-emulator { background: #1e1e1e; color: #61afef; padding: 15px; margin-top: 20px; border-radius: 8px; font-family: 'Consolas', monospace; }
+    #console-output { height: 200px; overflow-y: auto; white-space: pre-wrap; font-size: 14px; margin-bottom: 10px; }
+    .console-header { color: #abb2bf; font-size: 12px; margin-bottom: 10px; border-bottom: 1px solid #333; }
+    .clear-btn { background: #333; color: #fff; border: none; font-size: 11px; padding: 4px 10px; }
+</style>
 </body>
 </html>
