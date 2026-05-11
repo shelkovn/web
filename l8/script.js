@@ -80,13 +80,43 @@ function counterDelay(n)
 
 //TODO Написать функцию, возвращающую название первого репозитория на github.com по имени
 //пользователя (2 последовательных запроса: https://api.github.com/users/%USERNAME%).
+async function checkUserAndGetRepo(username) {
+  try {
+    const userResponse = await fetch(`https://api.github.com/users/${username}`);
+    
+    if (userResponse.status === 404) {
+      console.log("Пользователь не найден");
+      return `user ${username} is not found`;
+    }
+    
+    const userData = await userResponse.json();
+    console.log("Пользователь найден:", userData.login);
 
+    const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=1`);
+    const repos = await reposResponse.json();
+
+    if (repos.length > 0) {
+      console.log("Репозиторий найден")
+      return `found repo ${repos[0].name} by ${username}`;
+    } else {
+      console.log("У пользователя нет публичных репозиториев");
+      return `user ${username} has no public repos`
+    }
+  } catch (error) {
+    console.error("Ошибка при запросе:", error);
+    return null;
+  }
+}
+
+// checkUserAndGetRepo("dmitryweiner").then(x => {
+//   console.log(x);
+// });
 
 //Задача 3 (на async/await)
 //Перепишите, используя async/await вместо .then/catch.
 
-//TODO В функции getGithubUser замените рекурсию на цикл, используя async/await.
-
+//const response = await fetch("https://api.github.com/users/dmitryweiner");
+//const json = await response.json();
 class HttpError extends Error {
   constructor(response) {
     super(`${response.status} for ${response.url}`);
@@ -95,36 +125,43 @@ class HttpError extends Error {
   }
 }
 
-function loadJson(url) {
-  return fetch(url)
-    .then(response => {
-      if (response.status == 200) {
-        return response.json();
-      } else {
-        throw new HttpError(response);
-      }
-    })
+async function loadJson(url) {
+  const response = await fetch(url)
+  if (response.status == 200) {
+    return await response.json();
+  } else {
+    throw new HttpError(response);
+  }
 }
 
 // Запрашивается логин, пока github не вернёт существующего пользователя.
-function getGithubUser() {
-  let name = prompt("Введите логин?", "iliakan");
+async function getGithubUser() {
+  let user;
 
-  return loadJson(`https://api.github.com/users/${name}`)
-    .then(user => {
-      alert(`Полное имя: ${user.name}.`);
-      return user;
-    })
-    .catch(err => {
+  while (true) {
+    let name = prompt("Введите логин?", "iliakan");
+
+    if (name === null) {
+      console.log("canceled by user");
+      return null;
+    }
+
+    try {
+      user = await loadJson(`https://api.github.com/users/${name}`)
+      break;
+    } catch (err) {
       if (err instanceof HttpError && err.response.status == 404) {
-        alert("Такого пользователя не существует, пожалуйста, повторите ввод.");
-        return demoGithubUser();
+        console.log("Такого пользователя не существует, пожалуйста, повторите ввод.");
       } else {
         throw err;
       }
-    });
+    }
+  }
+
+  console.log(`Полное имя: ${user.name}.`);
+  return user;
 }
 
-getGithubUser();
+//getGithubUser().catch(err => console.error("error:", err));;
 
 //TODO UI
