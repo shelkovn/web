@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>катись по Берчестану</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="travelstyles.css"/>
+    <script src="travelscript.js"></script>
+</head>
+<body>
+
+    <header id="header">
+        <h1>БЕРЧЕСТАН</h1>
+        <h2>Очень крутая страна</h2>
+        <h3>Вход только для крутых</h3>
+    </header> 
+
+    <nav id="navigation">
+        <ul>
+            <li><a href="#header">Главная</a></li>
+            <li><a href="#map">Карта регионов</a></li>
+            <li><a href="#description">Описание</a></li>
+            <li><a href="#places-carousel">Места</a></li>
+            <li><a href="#about">О стране</a></li>
+            <li><a href="#tours">Туры</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <section id="map">
+        <div class="about-region">
+            <h2> Карта регионов </h2>
+            <div class="map-image-container" id="map-element">
+                <!-- <img id="map-img" src="https://i.pinimg.com/1200x/c2/f5/65/c2f565385fcaa75e4dfb2fe1f95c626b.jpg" alt="Карта регионов"/>
+                <svg class="map-overlay" preserveAspectRatio="none">
+                    <circle id="region-circle" fill="none" stroke="white" stroke-width="3"/>
+                </svg> -->
+            </div>
+            <div id="selected-region" class="selected-region">
+                <h3 id="region-title">Выберите регион</h3>
+                <p id="region-description">Нажмите на кнопку ниже, чтобы узнать подробнее</p>
+            </div>
+
+            <div class="region-buttons">
+                <button class="region-button" 
+                        data-place="Novosibirsk"
+                        data-circle-r="25000"
+                        data-region-title="Твинкосибирск!!!!"
+                        data-region-description="Очень круто!!!! Шнег за сыворот бесплатно. Остерегайтесь берчевирусов и бешеных фушигуров.">
+                    Дом Тоши
+                </button>
+
+                <button class="region-button" 
+                        data-place="Taganrog"
+                        data-circle-r="15000"
+                        data-region-title="Адская пустыня"
+                        data-region-description="Ужас полный. Ловушки и все взрывается. Можно жить бесплатно если съесть брата.">
+                    Убежище биба00
+                </button>
+
+                <button class="region-button" 
+                        data-place="Voronezh"
+                        data-circle-r="5000"
+                        data-region-title="Небесная обитель"
+                        data-region-description="Очень красиво. Много собы и белки кушают из рук. Иногда встречаются темные люди.">
+                    Boba the charmer's Humble abode
+                </button>
+
+                <button class="region-button" 
+                        data-place="Vittoria"
+                        data-circle-r="35000"
+                        data-region-title="Остров солнца"
+                        data-region-description="Место обитания Итальянской Кошки. Бесконечное веселье. Иногда летают зонтики.">
+                    Владения лайлы
+                </button>
+
+                <button class="region-button" 
+                        data-place="Санкт-Петербург"
+                        data-circle-r="10000"
+                        data-region-title="Питеррр"
+                        data-region-description="Что тут еще говорить?">
+                    I7 altar
+                </button>
+            </div>
+        </div>
+            
+    </section>
+
+    <section id="description">
+        <div class="text-container">
+            <h2>Описание</h2>
+            <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+            <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+            <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+            <button class="default-button"> Задать вопрос </button>
+        </div>
+        <img class="desc-image" src="https://i.pinimg.com/736x/6e/ca/d6/6ecad671454173e6d05ca37fbd16e2c5.jpg"/>
+    </section>
+
+    <section id="places-carousel">
+        <h2>Крутые места Берчестана</h2>
+        
+        <div class="carousel-container">
+            <button class="carousel-button carousel-button-prev" aria-label="Предыдущий слайд">❮</button>
+            
+            <div class="carousel-slides">
+                <div class="carousel-slide active">
+                    <div id="img-mountains" class="carousel-image" ></div>
+                    <div class="carousel-content">
+                        <h3>Горы Берчестана</h3>
+                        <p>Величественные вершины, уходящие в облака. Лучшее место для хайкинга и медитаций.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div id="img-lakes" class="carousel-image"></div>
+                    <div class="carousel-content">
+                        <h3>Озёра Берчестана</h3>
+                        <p>Бирюзовая вода и живописные берега. Идеально для отдыха и фотографий.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div id="img-forests" class="carousel-image" ></div>
+                    <div class="carousel-content">
+                        <h3>Леса Берчестана</h3>
+                        <p>Древние леса с уникальной флорой и фауной. Настоящая сказка для любителей природы.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-button carousel-button-next" aria-label="Следующий слайд">❯</button>
+            
+            <div class="carousel-indicators">
+                <button class="indicator active" data-index="0"></button>
+                <button class="indicator" data-index="1"></button>
+                <button class="indicator" data-index="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <!--<section id="weather">
+        <h2>Погода</h2>
+        <div class="weather-container">
+            <svg width="100%" height="100%">
+                <rect width="100%" height="100%" fill="#f0f0f0"></rect>
+            </svg>
+        </div>
+    </section>-->
+
+    <section id="about">
+        <h2>О стране</h2>
+        <ol class="facts-container">
+            <li>Берчестан очень крутой</li>
+            <li>Берчестан очень крутой</li>
+            <li>Берчестан очень крутой</li>
+            <li>Мы очень круто пишем про берчестан</li>
+        </ol>
+    </section>
+
+<section id="tours">
+    <h2>Туры в Берчестан</h2>
+
+    <div class="tours-container">
+        <div class="tour-card">
+            <div class="tour-image-container">
+                <img class="tour-image" src="https://i.pinimg.com/736x/7e/5c/e4/7e5ce4604bed8665e6191e3e09e31f5e.jpg" alt="Горный тур">
+            </div>
+            <div class="tour-content">
+                <h3 class="tour-title">Горное приключение</h3>
+                <p class="tour-description">Восхождение на Бибаяму, ночевка в горах, йога на рассвете и фотосессия с ёлками</p>
+                <div class="tour-footer">
+                    <span class="tour-price">25 000 ₽</span>
+                    <button class="tour-button">Забронировать</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tour-card">
+            <div class="tour-image-container">
+                <img class="tour-image" src="https://i.pinimg.com/1200x/c2/ce/47/c2ce47ac2a5020cf144bedd5f3de893b.jpg" alt="Лесной тур">
+            </div>
+            <div class="tour-content">
+                <h3 class="tour-title">Моховичковый лес</h3>
+                <p class="tour-description">Эко-тур с грибами, ягодами, страховкой от белок и мастер-классом по сбору мха</p>
+                <div class="tour-footer">
+                    <span class="tour-price">18 500 ₽</span>
+                    <button class="tour-button">Забронировать</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tour-card">
+            <div class="tour-image-container">
+                <img class="tour-image" src="https://i.pinimg.com/736x/a3/72/c7/a372c7ad647526067e8dd4234697a67b.jpg" alt="Озерный тур">
+            </div>
+            <div class="tour-content">
+                <h3 class="tour-title">Водная гладь</h3>
+                <p class="tour-description">Сплав по озеру, рыбалка с утками, пикник на берегу и наблюдение за рыбами</p>
+                <div class="tour-footer">
+                    <span class="tour-price">22 000 ₽</span>
+                    <button class="tour-button">Забронировать</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tour-card">
+            <div class="tour-image-container">
+                <img class="tour-image" src="https://i.pinimg.com/736x/36/17/b1/3617b1bf93d6a0d251b8ba2df0981d4e.jpg" alt="Морской тур">
+            </div>
+            <div class="tour-content">
+                <h3 class="tour-title">Винное море</h3>
+                <p class="tour-description">Яхтинг, встреча с зелеными дельфинами, дегустация вин и фото с чешуйчатыми драконами</p>
+                <div class="tour-footer">
+                    <span class="tour-price">35 000 ₽</span>
+                    <button class="tour-button">Забронировать</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tour-card">
+            <div class="tour-image-container">
+                <img class="tour-image" src="https://i.pinimg.com/1200x/0e/fe/b7/0efeb73e46628bdc209b4f98b3517fc7.jpg" alt="Комбо тур">
+            </div>
+            <div class="tour-content">
+                <h3 class="tour-title">Большое путешествие</h3>
+                <p class="tour-description">7 дней: горы + лес + озеро + море. Всё включено, включая встречу с драконами</p>
+                <div class="tour-footer">
+                    <span class="tour-price">89 000 ₽</span>
+                    <button class="tour-button">Забронировать</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tour-card">
+            <div class="tour-image-container">
+                <img class="tour-image" src="https://i.pinimg.com/1200x/d7/63/9e/d7639e51f78a7a8fefdff93d10041b36.jpg" alt="Романтический тур">
+            </div>
+            <div class="tour-content">
+                <h3 class="tour-title">Романтика в Берчестане</h3>
+                <p class="tour-description">Закат на озере, ужин при свечах, прогулка при луне и серенады от местных уток</p>
+                <div class="tour-footer">
+                    <span class="tour-price">42 000 ₽</span>
+                    <button class="tour-button">Забронировать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="reviews">
+    <h2>Отзывы путешественников</h2>
+    
+    <div class="reviews-container">
+        <div class="review-card">
+            <div class="review-header">
+                <img class="review-avatar" src="https://i.pinimg.com/1200x/ee/8c/88/ee8c883fe34fd9a0c6bae733c6e4821b.jpg">
+                <div class="review-meta">
+                    <h3 class="review-author">Боба Яндерев</h3>
+                    <span class="review-date">12 марта 2026</span>
+                </div>
+            </div>
+            <div class="review-content">
+                <p class="review-text">Невероятные впечатления от поездки! Горы Берчестана просто завораживают. Обязательно вернусь сюда снова, чтобы исследовать винное море. Местные жители очень дружелюбные, а кухня — пальчики оближешь!</p>
+            </div>
+        </div>
+        
+        <div class="review-card">
+            <div class="review-header">
+                <img class="review-avatar" src="https://i.pinimg.com/736x/cd/68/d6/cd68d62c381a786f9c1067dab76229ff.jpg" alt="Аватар пользователя">
+                <div class="review-meta">
+                    <h3 class="review-author">Тоша Трипулин</h3>
+                    <span class="review-date">5 февраля 2026</span>
+                </div>
+            </div>
+            <div class="review-content">
+                <p class="review-text">Отдыхали с семьей в Лесу моховичковом. Очень красиво и спокойно. Белки правда немного наглые, но страховка от них помогла 😄 Детям очень понравилось, рекомендую!</p>
+            </div>
+        </div>
+        
+        <div class="review-card">
+            <div class="review-header">
+                <img class="review-avatar" src="https://i.pinimg.com/1200x/0c/18/c3/0c18c30c7a5297e1effb44fba43946d6.jpg" alt="Аватар пользователя">
+                <div class="review-meta">
+                    <h3 class="review-author">Влония Эмохаерова</h3>
+                    <span class="review-date">20 января 2026</span>
+                </div>
+            </div>
+            <div class="review-content">
+                <p class="review-text">Винное море — это что-то невероятное! Видела зеленых дельфинов, они совсем не страшные, очень игривые. Катались на паруснике, погода шикарная. Обязательно приеду еще!</p>
+            </div>
+        </div>
+        
+        <div class="review-card">
+            <div class="review-header">
+                <img class="review-avatar" src="https://i.pinimg.com/736x/10/f5/47/10f5479a05a46f9f0b0ac2c3ba054aa2.jpg">
+                <div class="review-meta">
+                    <h3 class="review-author">Каша Спардович</h3>
+                    <span class="review-date">8 декабря 2025</span>
+                </div>
+            </div>
+            <div class="review-content">
+                <p class="review-text">Был на Горе Бибаяма. Очень снежно, но красиво. Ёлки пушистые, виды открываются шикарные. Советую брать с собой термос с чаем и хорошую компанию!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="faq">
+        <h2>Часто задаваемые вопросы</h2>
+        <div class="faq-item">
+            <input type="checkbox" id="faq1" class="faq-toggle">
+            <label for="faq1" class="faq-question">Зачем катиться в Берчестан?</label>
+            <div class="faq-answer">
+                <p>Там очень круто. Лучшие пейзажи, дружелюбные местные жители и невероятная кухня.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <input type="checkbox" id="faq2" class="faq-toggle">
+            <label for="faq2" class="faq-question">Как катиться в Берчестан?</label>
+            <div class="faq-answer">
+                <p>Колбаской. Также доступны варианты: шариком, кубиком и иногда пирамидкой.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <input type="checkbox" id="faq3" class="faq-toggle">
+            <label for="faq3" class="faq-question">Почему вам стоит доверять?</label>
+            <div class="faq-answer">
+                <p>Мы очень крутые. Уже 10 лет катимся по Берчестану и знаем каждый его уголок.</p>
+            </div>
+        </div>
+        <button class="default-button"> Задать вопрос </button>
+    </section>
+    
+    <section id="memories">
+    <h2>Воспоминания о Берчестане</h2>
+    
+    <div class="memories-container">
+        <div class="memory-item">
+            <img src="https://i.pinimg.com/1200x/1e/80/e6/1e80e6a59d31cc6ddc1edb5e25f66388.jpg" alt="Горы Берчестана" class="memory-image">
+        </div>
+        
+        <div class="memory-item">
+            <img src="https://i.pinimg.com/736x/29/7e/8c/297e8c19a0057ac9f2a5a479551e4b19.jpg" alt="Озера Берчестана" class="memory-image">
+        </div>
+        
+        <div class="memory-item">
+            <img src="https://i.pinimg.com/1200x/2f/a6/6f/2fa66fb15e97cfd28f33e1840f116703.jpg" alt="Леса Берчестана" class="memory-image">
+        </div>
+        
+        <div class="memory-item">
+            <img src="https://i.pinimg.com/1200x/7b/24/e5/7b24e516cabd803a02a23d4160c51adc.jpg" alt="Море Берчестана" class="memory-image">
+        </div>
+        
+        <div class="memory-item">
+            <img src="https://i.pinimg.com/736x/01/86/41/0186417ace827ac58e895c61c8db7f6a.jpg" alt="Закат в Берчестане" class="memory-image">
+        </div>
+    </div>
+</section>
+
+    <footer id="contacts">
+        <h2>Контакты</h2>
+        <div class="contact-info">
+            <p>Телефон: +7 (XXX) XXX-XX-XX</p>
+            <p>Email: info@travel-country.ru</p>
+            <p>Адрес: Город, Улица, Дом</p>
+        </div>
+        <p>&copy; Хочу домой. Но я уже дома. Грустно. My Towa is kinda homeless. 2026</p>
+    </footer>
+</body>
+</html>
