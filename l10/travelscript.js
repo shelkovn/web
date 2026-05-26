@@ -172,6 +172,7 @@ async function getWeatherForecast(lon, lat) {
         const parsedForecast = parseNext24Hours(data);
         
         //TODO интерфейс
+        renderWeatherCarousel(parsedForecast);
         console.log(parsedForecast)
         
     } catch (error) {
@@ -229,5 +230,115 @@ function parseNext24Hours(apiResponse) {
     }
 
     return resultForecast;
+}
+
+function renderWeatherCarousel(forecastList) {
+    const track = document.getElementById('weather-track');
+    const indicatorsContainer = document.getElementById('weather-indicators');
+    
+    if (!track) return;
+    
+    // HTML карточек
+    track.innerHTML = forecastList.map(item => `
+        <div class="weather-card">
+            <div class="weather-time">${item.time}</div>
+            <div class="weather-status">${item.weather_status}</div>
+            <div class="weather-temp">${item.temperature}</div>
+            <div class="weather-info">
+                <span>💨 Ветер: ${item.wind}</span>
+                <span>💧 Осадки: ${item.precipitation}</span>
+            </div>
+        </div>
+    `).join('');
+
+    // Инициализируем управление каруселью
+    initWeatherSlider(track, indicatorsContainer);
+}
+
+function initWeatherSlider(track, indicatorsContainer) {
+    const prevBtn = document.querySelector('.weather-carousel-button-prev');
+    const nextBtn = document.querySelector('.weather-carousel-button-next');
+    const viewport = document.querySelector('.weather-viewport');
+    
+    let currentIndex = 0; // Текущая "страница" сдвига
+    let maxPages = 0;
+    
+    function updateSliderConfig() {
+        const cards = Array.from(track.children);
+        if (cards.length === 0) return;
+
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+        const viewportWidth = viewport.getBoundingClientRect().width;
+        
+        // сколько карточек помещается на экране целиком
+        const visibleCards = Math.round(viewportWidth / (cardWidth + gap));
+        // количество страниц прокрутки
+        maxPages = Math.max(0, cards.length - visibleCards);
+        
+        if (currentIndex > maxPages) currentIndex = maxPages;
+        
+        // Генерация точек-индикаторов
+        indicatorsContainer.innerHTML = '';
+        for (let i = 0; i <= maxPages; i++) {
+            const btn = document.createElement('button');
+            btn.classList.add('weather-indicator');
+            if (i === currentIndex) btn.classList.add('active');
+            btn.setAttribute('data-page', i);
+            indicatorsContainer.appendChild(btn);
+        }
+        
+        scrollToPage(currentIndex, cardWidth, gap);
+    }
+
+    function scrollToPage(page, cardWidth, gap) {
+        currentIndex = page;
+        // Считаем точный сдвиг в пикселях
+        const offset = currentIndex * (cardWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+        
+        // Обновляем состояние кнопок стрелок
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === maxPages;
+        
+        // Обновляем активную точку
+        const indicators = indicatorsContainer.querySelectorAll('.weather-indicator');
+        indicators.forEach((ind, idx) => {
+            ind.classList.toggle('active', idx === currentIndex);
+        });
+    }
+
+    // Обработчики кликов по стрелкам
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < maxPages) {
+            const cardWidth = track.children[0].getBoundingClientRect().width;
+            const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+            scrollToPage(currentIndex + 1, cardWidth, gap);
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            const cardWidth = track.children[0].getBoundingClientRect().width;
+            const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+            scrollToPage(currentIndex - 1, cardWidth, gap);
+        }
+    });
+
+    // Делегирование кликов для точек-индикаторов
+    indicatorsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('weather-indicator')) {
+            const page = parseInt(e.target.getAttribute('data-page'));
+            const cardWidth = track.children[0].getBoundingClientRect().width;
+            const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+            scrollToPage(page, cardWidth, gap);
+        }
+    });
+
+    // Пересчитываем слайдер при ресайзе окна (чтобы не ломался шаг на смартфонах)
+    window.addEventListener('resize', updateSliderConfig);
+    
+    // Первый запуск калькуляции конфигурации
+    setTimeout(updateSliderConfig, 100); 
 }
 

@@ -452,25 +452,138 @@ section {
 
 #weather {
     @include flex-center(column);
-    min-height: 300px;
+    padding: map-get($spacing, 'xl') map-get($spacing, 'md');
+}
 
-    .weather-container {
-        width: 100%;
-        max-width: 90dvw;
-        height: 40dvh;
-        margin: map-get($spacing, 'md') 0;
-        border-radius: 5px;
-        overflow: hidden;
-        @include box-shadow();
-        @include transition();
+.weather-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 90vw;
+    margin: map-get($spacing, 'md') auto;
+    padding: 0 60px; // Место для стрелок
+}
 
-        &:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 40px map-get($colors, 'primary-medium');
-        }
+.weather-viewport {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 10px 5px;
+}
+
+.weather-track {
+    display: flex;
+    gap: 1.5rem;
+    scroll-behavior: smooth;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+// Стили карточки одного часа
+.weather-card {
+    flex: 0 0 calc((100% - (1.5rem * 3)) / 8); // По умолчанию 8 карточки на экране
+    background-color: map-get($colors, 'card-bg');
+    border-radius: 12px;
+    padding: map-get($spacing, 'sm');
+    text-align: center;
+    @include box-shadow();
+    @include transition();
+    border: 1px solid rgba(159, 139, 229, 0.1);
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px map-get($colors, 'primary-medium');
+        border-color: map-get($colors, 'primary-medium');
+    }
+
+    .weather-time {
+        font-family: map-get($fonts, 'gapsans'), sans-serif;
+        font-size: 1.1rem;
+        color: map-get($colors, 'primary-dark');
+        margin-bottom: 0.5rem;
+    }
+
+    .weather-temp {
+        font-family: map-get($fonts, 'forksa'), cursive;
+        font-size: 2.2rem;
+        color: map-get($colors, 'text-dark');
+        margin: 0.5rem 0;
+    }
+
+    .weather-status {
+        font-size: 0.95rem;
+        font-weight: bold;
+        color: map-get($colors, 'primary-medium');
+        margin-bottom: 0.5rem;
+    }
+
+    .weather-info {
+        font-size: 0.85rem;
+        color: rgba(45, 42, 68, 0.8);
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
     }
 }
 
+.weather-carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: map-get($colors, 'white');
+    color: map-get($colors, 'primary-dark');
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    @include box-shadow();
+    @include transition();
+    @include flex-center();
+    
+    &:hover {
+        background: map-get($colors, 'primary-medium');
+        color: map-get($colors, 'white');
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    &-prev { left: 5px; }
+    &-next { right: 5px; }
+    
+    &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+// Точки-индикаторы
+.weather-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: map-get($spacing, 'xs');
+    margin-top: map-get($spacing, 'sm');
+
+    .weather-indicator {
+        width: 10px;
+        height: 10px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(159, 139, 229, 0.3);
+        cursor: pointer;
+        padding: 0;
+        @include transition();
+        
+        &:hover { background: map-get($colors, 'primary-medium'); }
+        
+        &.active {
+            background: map-get($colors, 'primary-dark');
+            transform: scale(1.2);
+            box-shadow: 0 0 8px map-get($colors, 'primary-medium');
+        }
+    }
+}
 
 #about {
     width: 100%;
