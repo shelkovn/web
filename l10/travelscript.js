@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //погода
 function buildWeatherRequestJson(lon = 82.92, lat = 55.03) {
-    let ln = Number(lon), lt = Number(lat);
+    let ln = Number(lon).toFixed(2), lt = Number(lat).toFixed(2);
     return `https://api.open-meteo.com/v1/forecast?latitude=${lt}&longitude=${ln}&hourly=temperature_2m,wind_speed_10m,cloud_cover,weather_code&forecast_days=2&wind_speed_unit=ms`;
 }
 
