@@ -209,7 +209,7 @@ function parseNext24Hours(apiResponse) {
     const hourlyData = apiResponse.hourly;
     
     for (let i = 0; i < hourlyData.time.length; i++) {
-        const itemDate = new Date(hourlyData.time[i]); // Время там уже в ISO формате
+        const itemDate = new Date(hourlyData.time[i]);
         
         // Фильтруем: только будущее время в пределах 24 часов
         const hoursDifference = (itemDate - now) / (1000 * 60 * 60);
@@ -220,9 +220,9 @@ function parseNext24Hours(apiResponse) {
             const monthStr = String(itemDate.getMonth() + 1).padStart(2, '0');
 
             resultForecast.push({
-                time: `${dayStr}.${monthStr} ${hoursStr}:00`,
+                time: `${hoursStr}:00, ${dayStr}.${monthStr}`,
                 temperature: `${Math.round(hourlyData.temperature_2m[i])} °C`,
-                wind: `${Math.round(hourlyData.wind_speed_10m[i])} м/с`, // Сразу в м/с без индексов
+                wind: `${Math.round(hourlyData.wind_speed_10m[i])} м/с`, 
                 weather_status: getWeatherStatus(hourlyData.weather_code[i]),
                 precipitation: getPrecipitationType(hourlyData.weather_code[i])
             });
@@ -251,7 +251,6 @@ function renderWeatherCarousel(forecastList) {
         </div>
     `).join('');
 
-    // Инициализируем управление каруселью
     initWeatherSlider(track, indicatorsContainer);
 }
 
@@ -260,7 +259,7 @@ function initWeatherSlider(track, indicatorsContainer) {
     const nextBtn = document.querySelector('.weather-carousel-button-next');
     const viewport = document.querySelector('.weather-viewport');
     
-    let currentIndex = 0; // Текущая "страница" сдвига
+    let currentIndex = 0;
     let maxPages = 0;
     
     function updateSliderConfig() {
@@ -307,6 +306,29 @@ function initWeatherSlider(track, indicatorsContainer) {
             ind.classList.toggle('active', idx === currentIndex);
         });
     }
+
+    // прокрутка к карточке по нажатию
+    track.addEventListener('click', (e) => {
+        const clickedCard = e.target.closest('.weather-card');
+        if (!clickedCard) return;
+
+        const cards = Array.from(track.children);
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+        const viewportWidth = viewport.getBoundingClientRect().width;
+        
+        const visibleCards = Math.round(viewportWidth / (cardWidth + gap));
+        const cardIndex = cards.indexOf(clickedCard);
+    
+        // вычитаем половину видимых (чтобы оказалась в центре)
+        let targetPage = cardIndex - Math.floor(visibleCards / 2);
+        
+        // проверка на индекс
+        if (targetPage < 0) targetPage = 0;
+        if (targetPage > maxPages) targetPage = maxPages;
+
+        scrollToPage(targetPage, cardWidth, gap);
+    });
 
     // Обработчики кликов по стрелкам
     nextBtn.addEventListener('click', () => {

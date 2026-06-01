@@ -468,6 +468,7 @@ section {
     overflow: hidden;
     border-radius: 12px;
     padding: 10px 5px;
+    scroll-behavior: smooth;
 }
 
 .weather-track {
@@ -480,7 +481,7 @@ section {
 
 // Стили карточки одного часа
 .weather-card {
-    flex: 0 0 calc((100% - (1.5rem * 3)) / 8); // По умолчанию 8 карточки на экране
+    flex: 0 0 calc((100% - (1.5rem * 3)) / 10); // 8 на экране
     background-color: map-get($colors, 'card-bg');
     border-radius: 12px;
     padding: map-get($spacing, 'sm');

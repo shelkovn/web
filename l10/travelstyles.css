@@ -385,6 +385,7 @@ section {
   overflow: hidden;
   border-radius: 12px;
   padding: 10px 5px;
+  scroll-behavior: smooth;
 }
 
 .weather-track {
@@ -396,7 +397,7 @@ section {
 }
 
 .weather-card {
-  flex: 0 0 calc((100% - 4.5rem) / 8);
+  flex: 0 0 calc((100% - 4.5rem) / 10);
   background-color: #ffffff;
   border-radius: 12px;
   padding: 1rem;
