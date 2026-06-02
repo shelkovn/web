@@ -171,9 +171,8 @@ async function getWeatherForecast(lon, lat) {
         const data = await response.json();
         const parsedForecast = parseNext24Hours(data);
         
-        //TODO интерфейс
         renderWeatherCarousel(parsedForecast);
-        console.log(parsedForecast)
+        //console.log(parsedForecast)
         
     } catch (error) {
         console.error("Не удалось получить прогноз погоды:", error);

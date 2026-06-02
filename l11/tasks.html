@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дела</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="tasksscript.js"></script>
+  <link rel="icon" href="https://cdn3.emoji.gg/emojis/1218-pringlescam.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rampart+One&family=Viaoda+Libre&family=Quintessential&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>
+      <img class="logo" src="https://i.pinimg.com/736x/a3/da/0d/a3da0dc32506d9cb176eb2f740a8e0f5.jpg" />
+      Cписок дел
+    </h1>
+  </header>
+
+  <div class="input-section">
+    <div class="input-group">
+    <div class="sort-container">
+      <button type="button" class="sort-trigger-btn" aria-label="Сортировка">&#9662; Сортировка</button>
+      <div class="sort-dropdown">
+        <div class="sort-option active" data-sort="new">новые</div>
+        <div class="sort-option" data-sort="old">старые</div>
+        <div class="sort-option" data-sort="az">а-я</div>
+        <div class="sort-option" data-sort="za">я-а</div>
+      </div>
+    </div>
+      <input type="text" placeholder="новый элемент...">
+      <div class="button-cluster">
+        <button type="submit">добавить</button>
+        <button type="reset">сбросить</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="todo-list-container">
+    <ul class="todo-list"></ul>
+  </div>
+
+  <div class="filter-section">
+    <span class="filter-btn active" data-filter="all">все</span>
+    <span class="filter-btn" data-filter="completed">готово</span>
+    <span class="filter-btn" data-filter="active">не сделано</span>
+  </div>
+
+  <footer class="footer">
+    &dagger; biba ochen umni
+  </footer>
+</body>
+
+</html>
