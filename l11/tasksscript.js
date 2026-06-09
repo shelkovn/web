@@ -79,7 +79,7 @@ function addTodo() {
 
 // list initialization
 document.addEventListener('DOMContentLoaded', () => {
-    // Присваиваем значения глобальным переменным после загрузки DOM
+    // globals init
     todoList = document.querySelector('.todo-list');
     input = document.querySelector('.input-group input');
 
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-    // Обработка кликов 
+    // list item functionality 
     todoList.addEventListener('click', (e) => {
         const index = e.target.dataset.index;
         if (index === undefined) return;
@@ -132,14 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sortDropdown = document.querySelector('.sort-dropdown');
     
+    //sort options 
     sortDropdown.addEventListener('click', (e) => {
         if (!e.target.classList.contains('sort-option')) return;
 
-        // Переключаем класс активного элемента
         document.querySelectorAll('.sort-option').forEach(opt => opt.classList.remove('active'));
         e.target.classList.add('active');
-
-        // Сортируем и перерисовываем
+        
         currentSort = e.target.dataset.sort;
         render();
     });
